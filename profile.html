@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Profile — Vostok Engineering Network</title>
+<meta name="description" content="Complete your Vostok profile. The more you add, the easier we can introduce you — and complete profiles typically receive higher offers.">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700;900&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#1c7a48;--green-deep:#15633c;--green-soft:#eaf3ed;--ink:#15201a;--muted:#5d645d;--line:#e6ebe6;--orange:#f15a22;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Noto Sans',-apple-system,'Segoe UI',Arial,sans-serif;color:var(--ink);background:#f3f6f3;line-height:1.65;}
+  a{text-decoration:none;color:inherit;}
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .nav{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:13px 22px;}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:16.5px;}
+  .logo-mark{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;background:var(--green);color:#fff;font-size:16px;}
+  .nav a.back{font-size:13px;color:var(--green);font-weight:700;}
+  .hero{background:linear-gradient(150deg,var(--green-deep) 0%,var(--green) 60%,#2c9a60 100%);color:#fff;padding:44px 22px 110px;text-align:center;}
+  .hero h1{font-weight:900;font-size:clamp(26px,4.5vw,38px);line-height:1.25;}
+  .hero p{font-size:15px;opacity:.93;margin-top:8px;max-width:620px;margin-left:auto;margin-right:auto;}
+  .hero p b{color:#ffd9a8;}
+  .badges{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px;}
+  .badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 16px;font-size:12.5px;}
+  .urdu{direction:rtl;font-family:'Noto Nastaliq Urdu',serif;font-size:14px;line-height:2.2;color:#fdf4e3;background:rgba(255,255,255,.12);border-radius:10px;padding:8px 16px;display:inline-block;margin-top:16px;max-width:600px;}
+  .formcard{max-width:760px;margin:-70px auto 0;padding:0 16px 12px;}
+  .formbox{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 24px 60px -24px rgba(21,32,26,.25);overflow:hidden;}
+  .formbox iframe{display:block;width:100%;height:2050px;border:0;}
+  .payinfo{max-width:760px;margin:18px auto 0;padding:0 16px;}
+  .paybox{background:#fff7ef;border:1.5px solid var(--orange);border-radius:14px;padding:16px 20px;font-size:13px;color:#6b4326;}
+  .paybox b{color:var(--orange);}
+  footer{max-width:760px;margin:0 auto;padding:26px 16px 40px;font-size:12px;color:var(--muted);text-align:center;}
+  footer a{color:var(--green);font-weight:700;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="engineers.html"><span class="logo-mark">V</span>Vostok</a>
+    <a class="back" href="engineers.html">← Back to overview</a>
+  </div>
+</header>
+
+<div class="hero">
+  <h1>Your profile = your offer.</h1>
+  <p><b>The more you complete, the easier it is for us to introduce you to clients — and complete profiles typically receive higher offers.</b> Everything below is optional. Use the same email you applied with.</p>
+  <div class="badges">
+    <span class="badge">Takes ~5 minutes</span>
+    <span class="badge">Boosts your introduction chances</span>
+    <span class="badge">Payout details → needed before first payment</span>
+  </div>
+  <br>
+  <span class="urdu" lang="ur">جتنا مکمل پروفائل، اتنی آسان کلائنٹ سے انٹروڈکشن — اور مکمل پروفائلز کو عموماً بہتر آفر ملتی ہے۔ وہی ای میل استعمال کریں جس سے درخواست دی تھی۔</span>
+</div>
+
+<div class="formcard">
+  <div class="formbox">
+    <iframe id="pf" src="" title="Vostok profile form" loading="eager"></iframe>
+  </div>
+</div>
+
+<div class="payinfo">
+  <div class="paybox"><b>About payout details:</b> we pay monthly in USD via <b>Wise</b>. Your account holder name, IBAN and bank name are not required to register — but they will be needed before your first payment, so adding them now means you get paid without delay. They are stored securely and used only for sending your money.</div>
+</div>
+
+<footer>
+  Vostok Inc.（株式会社Vostok）· Hive Shibuya 4F, 1-23-10 Jinnan, Shibuya-ku, Tokyo 150-0041, Japan<br>
+  <a href="terms.html">Terms of Use</a> · <a href="privacy.html">Privacy Policy</a> · © 2026 Vostok Inc.
+</footer>
+
+<script>
+  var email = new URLSearchParams(location.search).get('email') || '';
+  var src = 'https://airtable.com/embed/appdxTkBo7LBmoEdw/shrFIhlKjk1PAMuWv';
+  if (email) src += '?prefill_Email=' + encodeURIComponent(email);
+  document.getElementById('pf').src = src;
+</script>
+
+</body>
+</html>
