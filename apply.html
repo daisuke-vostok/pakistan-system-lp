@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apply — Vostok Engineering Network</title>
+<meta name="description" content="Apply to the Vostok Engineering Network in 2 minutes. No account, no fees. Work with Japanese companies, fully remote from Pakistan.">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700;900&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#1c7a48;--green-deep:#15633c;--green-soft:#eaf3ed;--ink:#15201a;--muted:#5d645d;--line:#e6ebe6;--orange:#f15a22;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Noto Sans',-apple-system,'Segoe UI',Arial,sans-serif;color:var(--ink);background:#f3f6f3;line-height:1.65;}
+  a{text-decoration:none;color:inherit;}
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .nav{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:13px 22px;}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:16.5px;}
+  .logo-mark{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;background:var(--green);color:#fff;font-size:16px;}
+  .nav a.back{font-size:13px;color:var(--green);font-weight:700;}
+  .hero{background:linear-gradient(150deg,var(--green-deep) 0%,var(--green) 60%,#2c9a60 100%);color:#fff;padding:44px 22px 110px;text-align:center;}
+  .hero h1{font-weight:900;font-size:clamp(26px,4.5vw,38px);line-height:1.25;}
+  .hero p{font-size:15px;opacity:.93;margin-top:8px;}
+  .badges{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px;}
+  .badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 16px;font-size:12.5px;}
+  .urdu{direction:rtl;font-family:'Noto Nastaliq Urdu',serif;font-size:14px;line-height:2.2;color:#fdf4e3;background:rgba(255,255,255,.12);border-radius:10px;padding:8px 16px;display:inline-block;margin-top:16px;max-width:560px;}
+  .formcard{max-width:760px;margin:-70px auto 0;padding:0 16px 40px;}
+  .formbox{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 24px 60px -24px rgba(21,32,26,.25);overflow:hidden;}
+  .formbox iframe{display:block;width:100%;height:1150px;border:0;}
+  .note{text-align:center;font-size:12.5px;color:var(--muted);margin-top:14px;}
+  .note a{color:var(--green);font-weight:700;}
+  footer{max-width:760px;margin:0 auto;padding:18px 16px 40px;font-size:12px;color:var(--muted);text-align:center;}
+  footer a{color:var(--green);font-weight:700;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="engineers.html"><span class="logo-mark">V</span>Vostok</a>
+    <a class="back" href="engineers.html">← Back to overview</a>
+  </div>
+</header>
+
+<div class="hero">
+  <h1>Apply in 2 minutes.</h1>
+  <p>5 questions. No account. No CV needed today — we'll ask later if there's a fit.</p>
+  <div class="badges">
+    <span class="badge">No fees — ever</span>
+    <span class="badge">Typical: $1,500–$3,000 / month</span>
+    <span class="badge">Reply within 3 business days</span>
+  </div>
+  <br>
+  <span class="urdu" lang="ur">صرف 5 سوالات، 2 منٹ۔ کوئی اکاؤنٹ نہیں، کوئی فیس نہیں۔ CV ابھی ضروری نہیں۔</span>
+</div>
+
+<div class="formcard">
+  <div class="formbox">
+    <iframe id="af" src="" title="Vostok application form" loading="eager"></iframe>
+  </div>
+  <p class="note">By submitting, you agree to our <a href="terms.html" target="_blank" rel="noopener">Terms of Use</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+</div>
+
+<footer>
+  Vostok Inc.（株式会社Vostok）· Hive Shibuya 4F, 1-23-10 Jinnan, Shibuya-ku, Tokyo 150-0041, Japan<br>
+  <a href="terms.html">Terms of Use</a> · <a href="privacy.html">Privacy Policy</a> · © 2026 Vostok Inc.
+</footer>
+
+<script>
+  var ls = new URLSearchParams(location.search).get('ls') || 'LP-A';
+  var allowed = ['LP-A','LP-B','Upwork','Referral','University','Other'];
+  if (allowed.indexOf(ls) === -1) ls = 'Other';
+  document.getElementById('af').src =
+    'https://airtable.com/embed/appdxTkBo7LBmoEdw/shrf2GwFUFdre9Udz'
+    + '?prefill_Lead%20Source=' + encodeURIComponent(ls)
+    + '&hide_Lead%20Source=true';
+</script>
+
+</body>
+</html>
