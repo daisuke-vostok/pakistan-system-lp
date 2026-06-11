@@ -29,6 +29,17 @@
   .note a{color:var(--green);font-weight:700;}
   footer{max-width:760px;margin:0 auto;padding:18px 16px 40px;font-size:12px;color:var(--muted);text-align:center;}
   footer a{color:var(--green);font-weight:700;}
+
+  /* language toggle */
+  .langtoggle{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;background:#fff;}
+  .langtoggle button{border:0;background:transparent;cursor:pointer;font-family:'Noto Sans',sans-serif;
+    font-weight:700;font-size:12.5px;padding:7px 14px;color:var(--muted);line-height:1;}
+  .langtoggle button.active{background:var(--green);color:#fff;}
+  .langtoggle button[data-l="ur"]{font-family:'Noto Nastaliq Urdu',serif;font-size:13.5px;}
+
+  /* ===== Urdu / RTL mode ===== */
+  html[dir="rtl"] body{font-family:'Noto Nastaliq Urdu','Noto Sans',serif;line-height:2.0;}
+  html[dir="rtl"] .urdu{display:none;}
 </style>
 </head>
 <body>
@@ -36,17 +47,23 @@
 <header>
   <div class="nav">
     <a class="brand" href="engineers.html"><span class="logo-mark">V</span>Vostok</a>
-    <a class="back" href="engineers.html">← Back to overview</a>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div class="langtoggle" role="group" aria-label="Language">
+        <button type="button" data-l="en" class="active" onclick="setLang('en')">EN</button>
+        <button type="button" data-l="ur" onclick="setLang('ur')">اردو</button>
+      </div>
+      <a class="back" href="engineers.html" data-ur="← اوور ویو پر واپس جائیں">← Back to overview</a>
+    </div>
   </div>
 </header>
 
 <div class="hero">
-  <h1>Apply in 1 minute.</h1>
-  <p>5 questions. No account. No CV needed today — we'll ask later if there's a fit.</p>
+  <h1 data-ur="ایک منٹ میں درخواست دیں۔">Apply in 1 minute.</h1>
+  <p data-ur="5 سوالات۔ کوئی اکاؤنٹ نہیں۔ آج CV کی ضرورت نہیں — اگر آپ موزوں ہوئے تو ہم بعد میں پوچھیں گے۔">5 questions. No account. No CV needed today — we'll ask later if there's a fit.</p>
   <div class="badges">
-    <span class="badge">No fees — ever</span>
-    <span class="badge">Paid monthly in USD</span>
-    <span class="badge">Reply within 3 business days</span>
+    <span class="badge" data-ur="کوئی فیس نہیں — کبھی نہیں">No fees — ever</span>
+    <span class="badge" data-ur="USD میں ماہانہ ادائیگی">Paid monthly in USD</span>
+    <span class="badge" data-ur="3 کاروباری دنوں میں جواب">Reply within 3 business days</span>
   </div>
   <br>
   <span class="urdu" lang="ur">صرف 5 سوالات، صرف ایک منٹ۔ کوئی اکاؤنٹ نہیں، کوئی فیس نہیں۔ CV ابھی ضروری نہیں۔</span>
@@ -56,12 +73,12 @@
   <div class="formbox">
     <iframe id="af" src="" title="Vostok application form" loading="eager"></iframe>
   </div>
-  <p class="note">By submitting, you agree to our <a href="terms.html" target="_blank" rel="noopener">Terms of Use</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+  <p class="note" data-ur='جمع کروا کر، آپ ہماری <a href="terms.html" target="_blank" rel="noopener">استعمال کی شرائط</a> اور <a href="privacy.html" target="_blank" rel="noopener">رازداری کی پالیسی</a> سے اتفاق کرتے ہیں۔'>By submitting, you agree to our <a href="terms.html" target="_blank" rel="noopener">Terms of Use</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</p>
 </div>
 
 <footer>
   Vostok Inc.（株式会社Vostok）· Hive Shibuya 4F, 1-23-10 Jinnan, Shibuya-ku, Tokyo 150-0041, Japan<br>
-  <a href="terms.html">Terms of Use</a> · <a href="privacy.html">Privacy Policy</a> · © 2026 Vostok Inc.
+  <a href="terms.html" data-ur="استعمال کی شرائط">Terms of Use</a> · <a href="privacy.html" data-ur="رازداری کی پالیسی">Privacy Policy</a> · © 2026 Vostok Inc.
 </footer>
 
 <script>
@@ -72,6 +89,30 @@
     'https://airtable.com/embed/appdxTkBo7LBmoEdw/shrf2GwFUFdre9Udz'
     + '?prefill_Lead%20Source=' + encodeURIComponent(ls)
     + '&hide_Lead%20Source=true';
+</script>
+
+</script>
+
+<script>
+  (function(){
+    var nodes = document.querySelectorAll('[data-ur]');
+    nodes.forEach(function(el){ el.setAttribute('data-en', el.innerHTML); });
+    window.setLang = function(lang){
+      var ur = (lang === 'ur');
+      nodes.forEach(function(el){
+        el.innerHTML = ur ? el.getAttribute('data-ur') : el.getAttribute('data-en');
+      });
+      document.documentElement.lang = ur ? 'ur' : 'en';
+      document.documentElement.dir  = ur ? 'rtl' : 'ltr';
+      document.querySelectorAll('.langtoggle button').forEach(function(b){
+        b.classList.toggle('active', b.getAttribute('data-l') === lang);
+      });
+      try{ localStorage.setItem('vostok_lang', lang); }catch(e){}
+    };
+    var saved = 'en';
+    try{ saved = localStorage.getItem('vostok_lang') || 'en'; }catch(e){}
+    if(saved === 'ur') setLang('ur');
+  })();
 </script>
 
 </body>

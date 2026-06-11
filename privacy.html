@@ -24,66 +24,106 @@
   .box{background:var(--green-soft);border-radius:12px;padding:14px 18px;font-size:13px;color:var(--green-deep);margin:22px 0;}
   .urdu{direction:rtl;text-align:right;font-family:'Noto Nastaliq Urdu',serif;font-size:14px;line-height:2.25;color:var(--green-deep);background:var(--green-soft);border-right:4px solid var(--green);border-radius:10px;padding:12px 16px;margin:0 0 22px;}
   .urdu small{display:block;direction:ltr;text-align:left;font-family:'Noto Sans',sans-serif;font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+  /* language toggle */
+  .langtoggle{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;background:#fff;}
+  .langtoggle button{border:0;background:transparent;cursor:pointer;font-family:'Noto Sans',sans-serif;
+    font-weight:700;font-size:12.5px;padding:7px 14px;color:var(--muted);line-height:1;}
+  .langtoggle button.active{background:var(--green);color:#fff;}
+  .langtoggle button[data-l="ur"]{font-family:'Noto Nastaliq Urdu',serif;font-size:13.5px;}
+
+  /* ===== Urdu / RTL mode ===== */
+  html[dir="rtl"] body{font-family:'Noto Nastaliq Urdu','Noto Sans',serif;line-height:2.0;}
+  html[dir="rtl"] .urdu{display:none;}
+  html[dir="rtl"] ul{padding-right:22px;padding-left:0;}
 </style>
 </head>
 <body>
 <header><div class="nav">
   <a class="brand" href="engineers.html"><span class="logo-mark">V</span>Vostok Engineering Network</a>
-  <a class="back" href="engineers.html">← Back</a>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div class="langtoggle" role="group" aria-label="Language">
+      <button type="button" data-l="en" class="active" onclick="setLang('en')">EN</button>
+      <button type="button" data-l="ur" onclick="setLang('ur')">اردو</button>
+    </div>
+    <a class="back" href="engineers.html" data-ur="← واپس جائیں">← Back</a>
+  </div>
 </div></header>
 <div class="wrap">
 
-<h1>Privacy Policy</h1>
-<p class="updated">Vostok Engineering Network · Last updated: June 10, 2026</p>
+<h1 data-ur="رازداری کی پالیسی">Privacy Policy</h1>
+<p class="updated" data-ur="ووستوک انجینئرنگ نیٹ ورک · آخری اپ ڈیٹ: 10 جون 2026">Vostok Engineering Network · Last updated: June 10, 2026</p>
 
-<div class="box">Plain-language summary: we collect your application data to match you with projects at Japanese companies. We share your profile with a prospective client only after confirming with you first. We never sell your data. You can ask us to correct or delete your data at any time.</div>
+<div class="box" data-ur="آسان خلاصہ: ہم آپ کی درخواست کا ڈیٹا جاپانی کمپنیوں کے پروجیکٹس سے میچ کرنے کے لیے جمع کرتے ہیں۔ آپ کا پروفائل کسی ممکنہ کلائنٹ کو صرف آپ سے پہلے تصدیق کے بعد دکھایا جاتا ہے۔ ہم آپ کا ڈیٹا کبھی فروخت نہیں کرتے۔ آپ کسی بھی وقت اپنے ڈیٹا کی درستی یا حذف کی درخواست کر سکتے ہیں۔">Plain-language summary: we collect your application data to match you with projects at Japanese companies. We share your profile with a prospective client only after confirming with you first. We never sell your data. You can ask us to correct or delete your data at any time.</div>
 <div class="urdu" lang="ur">آسان خلاصہ: ہم آپ کی درخواست کا ڈیٹا جاپانی کمپنیوں کے پروجیکٹس سے میچ کرنے کے لیے جمع کرتے ہیں۔ آپ کا پروفائل کسی ممکنہ کلائنٹ کو صرف آپ سے پہلے تصدیق کے بعد دکھایا جاتا ہے۔ ہم آپ کا ڈیٹا کبھی فروخت نہیں کرتے۔ آپ کسی بھی وقت اپنے ڈیٹا کی درستی یا حذف کی درخواست کر سکتے ہیں۔<small>This Urdu summary is for reference only. The English text above and below is the legally binding version. / یہ اردو خلاصہ صرف حوالے کے لیے ہے؛ قانونی طور پر انگریزی متن نافذ ہوگا۔</small></div>
 
-<h2>1. Who is responsible for your data</h2>
-<p>Vostok Inc.（株式会社Vostok）, Hive Shibuya 4F, 1-23-10 Jinnan, Shibuya-ku, Tokyo 150-0041, Japan ("Vostok", "we") is the data controller for personal data processed in connection with the Vostok Engineering Network.</p>
+<h2 data-ur="1. آپ کے ڈیٹا کا ذمہ دار کون ہے">1. Who is responsible for your data</h2>
+<p data-ur="Vostok Inc.（株式会社Vostok）, Hive Shibuya 4F, 1-23-10 Jinnan, Shibuya-ku, Tokyo 150-0041, Japan (&quot;Vostok&quot;, &quot;ہم&quot;) ووستوک انجینئرنگ نیٹ ورک کے سلسلے میں پروسیس کیے گئے ذاتی ڈیٹا کے لیے ڈیٹا کنٹرولر ہے۔">Vostok Inc.（株式会社Vostok）, Hive Shibuya 4F, 1-23-10 Jinnan, Shibuya-ku, Tokyo 150-0041, Japan ("Vostok", "we") is the data controller for personal data processed in connection with the Vostok Engineering Network.</p>
 
-<h2>2. What we collect</h2>
+<h2 data-ur="2. ہم کیا جمع کرتے ہیں">2. What we collect</h2>
 <ul>
-  <li><b>Application data</b>: name, email, WhatsApp number, country/city, skills, experience, language levels, links (GitHub, portfolio, LinkedIn), CV, availability, and expected rate.</li>
-  <li><b>Screening data</b>: interview notes, trial-task results, and skill assessments.</li>
-  <li><b>Verification data</b> (only at offer stage): government ID and liveness-check results, processed through a specialised verification provider.</li>
-  <li><b>Communications</b>: messages exchanged with us (email, WhatsApp, forms).</li>
+  <li data-ur="<b>درخواست کا ڈیٹا</b>: نام، ای میل، واٹس ایپ نمبر، ملک/شہر، مہارتیں، تجربہ، زبان کی سطح، لنکس (GitHub، پورٹ فولیو، LinkedIn)، CV، دستیابی، اور متوقع ریٹ۔"><b>Application data</b>: name, email, WhatsApp number, country/city, skills, experience, language levels, links (GitHub, portfolio, LinkedIn), CV, availability, and expected rate.</li>
+  <li data-ur="<b>اسکریننگ کا ڈیٹا</b>: انٹرویو کے نوٹس، ٹرائل ٹاسک کے نتائج، اور مہارت کا اندازہ۔"><b>Screening data</b>: interview notes, trial-task results, and skill assessments.</li>
+  <li data-ur="<b>تصدیق کا ڈیٹا</b> (صرف آفر کے مرحلے پر): سرکاری ID اور لائیونیس چیک کے نتائج، جو ایک مخصوص تصدیقی فراہم کنندہ کے ذریعے پروسیس کیے جاتے ہیں۔"><b>Verification data</b> (only at offer stage): government ID and liveness-check results, processed through a specialised verification provider.</li>
+  <li data-ur="<b>مواصلات</b>: ہمارے ساتھ تبادلہ کیے گئے پیغامات (ای میل، واٹس ایپ، فارمز)۔"><b>Communications</b>: messages exchanged with us (email, WhatsApp, forms).</li>
 </ul>
 
-<h2>3. Why we use it</h2>
+<h2 data-ur="3. ہم اسے کیوں استعمال کرتے ہیں">3. Why we use it</h2>
 <ul>
-  <li>To assess your skills and experience and operate our screening process.</li>
-  <li>To match you with projects and introduce your profile to prospective clients — <b>only with your prior confirmation for each introduction</b>.</li>
-  <li>To communicate with you about your application and opportunities.</li>
-  <li>To verify your identity before an engagement and prevent fraud or impersonation.</li>
-  <li>To comply with legal obligations and protect our legal rights.</li>
+  <li data-ur="آپ کی مہارتوں اور تجربے کا جائزہ لینے اور ہمارا اسکریننگ کا عمل چلانے کے لیے۔">To assess your skills and experience and operate our screening process.</li>
+  <li data-ur="آپ کو پروجیکٹس سے میچ کرنے اور ممکنہ کلائنٹس سے آپ کا پروفائل متعارف کروانے کے لیے — <b>ہر تعارف کے لیے صرف آپ کی پیشگی تصدیق کے ساتھ</b>۔">To match you with projects and introduce your profile to prospective clients — <b>only with your prior confirmation for each introduction</b>.</li>
+  <li data-ur="آپ سے آپ کی درخواست اور مواقع کے بارے میں بات چیت کرنے کے لیے۔">To communicate with you about your application and opportunities.</li>
+  <li data-ur="کام سے پہلے آپ کی شناخت کی تصدیق کرنے اور دھوکہ دہی کو روکنے کے لیے۔">To verify your identity before an engagement and prevent fraud or impersonation.</li>
+  <li data-ur="قانونی ذمہ داریوں کی تعمیل کرنے اور ہمارے قانونی حقوق کی حفاظت کے لیے۔">To comply with legal obligations and protect our legal rights.</li>
 </ul>
 
-<h2>4. Sharing</h2>
+<h2 data-ur="4. شیئرنگ">4. Sharing</h2>
 <ul>
-  <li><b>Prospective clients</b>: a profile (skills, experience, assessment results) is shared only after we confirm with you. Internal notes and your expected rate are not shared with clients.</li>
-  <li><b>Service providers</b>: we use trusted tools to operate the Network (e.g., form and database services, communication tools, identity-verification providers), bound by their own security and data-processing commitments.</li>
-  <li><b>Legal</b>: where required by law or to protect our rights.</li>
-  <li>We do not sell your personal data.</li>
+  <li data-ur="<b>ممکنہ کلائنٹس</b>: ایک پروفائل (مہارتیں، تجربہ، تشخیص کے نتائج) صرف آپ سے تصدیق کرنے کے بعد شیئر کیا جاتا ہے۔ اندرونی نوٹس اور آپ کا متوقع ریٹ کلائنٹس کے ساتھ شیئر نہیں کیا جاتا۔"><b>Prospective clients</b>: a profile (skills, experience, assessment results) is shared only after we confirm with you. Internal notes and your expected rate are not shared with clients.</li>
+  <li data-ur="<b>سروس فراہم کرنے والے</b>: ہم نیٹ ورک چلانے کے لیے قابل اعتماد ٹولز استعمال کرتے ہیں (مثلاً، فارم اور ڈیٹا بیس سروسز، مواصلاتی ٹولز، شناخت کی تصدیق کرنے والے)، جو ان کی اپنی سیکیورٹی اور ڈیٹا پروسیسنگ کے وعدوں کے پابند ہیں۔"><b>Service providers</b>: we use trusted tools to operate the Network (e.g., form and database services, communication tools, identity-verification providers), bound by their own security and data-processing commitments.</li>
+  <li data-ur="<b>قانونی</b>: جہاں قانون کی ضرورت ہو یا ہمارے حقوق کے تحفظ کے لیے۔"><b>Legal</b>: where required by law or to protect our rights.</li>
+  <li data-ur="ہم آپ کا ذاتی ڈیٹا فروخت نہیں کرتے۔">We do not sell your personal data.</li>
 </ul>
 
-<h2>5. International transfers</h2>
-<p>We are based in Japan and use service providers that may store data in other countries (for example, the United States). Where personal data is transferred across borders, we take reasonable steps to ensure it receives an adequate level of protection consistent with Japan's Act on the Protection of Personal Information (APPI).</p>
+<h2 data-ur="5. بین الاقوامی ٹرانسفرز">5. International transfers</h2>
+<p data-ur="ہم جاپان میں مقیم ہیں اور ایسی سروسز استعمال کرتے ہیں جو دیگر ممالک (مثلاً، ریاستہائے متحدہ) میں ڈیٹا محفوظ کر سکتی ہیں۔ جہاں ذاتی ڈیٹا سرحدوں کے پار منتقل کیا جاتا ہے، ہم یہ یقینی بنانے کے لیے مناسب اقدامات کرتے ہیں کہ اسے جاپان کے ذاتی معلومات کے تحفظ کے قانون (APPI) کے مطابق مناسب تحفظ ملے۔">We are based in Japan and use service providers that may store data in other countries (for example, the United States). Where personal data is transferred across borders, we take reasonable steps to ensure it receives an adequate level of protection consistent with Japan's Act on the Protection of Personal Information (APPI).</p>
 
-<h2>6. Retention</h2>
-<p>We keep your profile while you remain registered in the talent pool. If you ask us to delete your profile, or if your profile has been inactive for 24 months, we delete or anonymise it, except where we must retain records to comply with law or resolve disputes.</p>
+<h2 data-ur="6. برقرار رکھنا (Retention)">6. Retention</h2>
+<p data-ur="جب تک آپ ٹیلنٹ پول میں رجسٹرڈ رہتے ہیں ہم آپ کا پروفائل رکھتے ہیں۔ اگر آپ ہم سے اپنا پروفائل ڈیلیٹ کرنے کا کہتے ہیں، یا اگر آپ کا پروفائل 24 ماہ سے غیر فعال ہے، تو ہم اسے ڈیلیٹ یا گمنام کر دیتے ہیں، سوائے اس کے کہ جہاں قانون کی تعمیل یا تنازعات کے حل کے لیے ہمیں ریکارڈ رکھنا ضروری ہو۔">We keep your profile while you remain registered in the talent pool. If you ask us to delete your profile, or if your profile has been inactive for 24 months, we delete or anonymise it, except where we must retain records to comply with law or resolve disputes.</p>
 
-<h2>7. Security</h2>
-<p>We restrict access to your data to those who need it, use access-controlled tools, and require confidentiality from anyone handling it. No system is perfectly secure; we will notify you without undue delay of any data breach that significantly affects you.</p>
+<h2 data-ur="7. سیکیورٹی">7. Security</h2>
+<p data-ur="ہم آپ کے ڈیٹا تک رسائی ان لوگوں تک محدود رکھتے ہیں جنہیں اس کی ضرورت ہے، رسائی کے کنٹرول والے ٹولز استعمال کرتے ہیں، اور اسے ہینڈل کرنے والے ہر شخص سے رازداری کا مطالبہ کرتے ہیں۔ کوئی بھی نظام مکمل طور پر محفوظ نہیں ہے؛ ہم آپ کو کسی بھی ایسے ڈیٹا بریچ کے بارے میں بغیر کسی تاخیر کے مطلع کریں گے جو آپ کو نمایاں طور پر متاثر کرے۔">We restrict access to your data to those who need it, use access-controlled tools, and require confidentiality from anyone handling it. No system is perfectly secure; we will notify you without undue delay of any data breach that significantly affects you.</p>
 
-<h2>8. Your rights</h2>
-<p>You may request access to, correction of, or deletion of your personal data at any time, and may withdraw consent to future processing (which may end your participation in the Network). To exercise these rights, contact us through the application form or the contact details provided in our communications. We respond within a reasonable period consistent with applicable law.</p>
+<h2 data-ur="8. آپ کے حقوق">8. Your rights</h2>
+<p data-ur="آپ کسی بھی وقت اپنے ذاتی ڈیٹا تک رسائی، درستی، یا اسے حذف کرنے کی درخواست کر سکتے ہیں، اور مستقبل کی پروسیسنگ کے لیے رضامندی واپس لے سکتے ہیں (جس سے نیٹ ورک میں آپ کی شرکت ختم ہو سکتی ہے)۔ ان حقوق کا استعمال کرنے کے لیے، درخواست فارم کے ذریعے یا ہمارے مواصلات میں فراہم کردہ رابطے کی تفصیلات کے ذریعے ہم سے رابطہ کریں۔ ہم قابل اطلاق قانون کے مطابق ایک مناسب مدت کے اندر جواب دیتے ہیں۔">You may request access to, correction of, or deletion of your personal data at any time, and may withdraw consent to future processing (which may end your participation in the Network). To exercise these rights, contact us through the application form or the contact details provided in our communications. We respond within a reasonable period consistent with applicable law.</p>
 
-<h2>9. Changes</h2>
-<p>We may update this Policy from time to time. The "Last updated" date shows the current version; material changes will be notified to registered engineers.</p>
+<h2 data-ur="9. تبدیلیاں">9. Changes</h2>
+<p data-ur="ہم وقتاً فوقتاً اس پالیسی کو اپ ڈیٹ کر سکتے ہیں۔ &quot;آخری اپ ڈیٹ&quot; کی تاریخ موجودہ ورژن کو ظاہر کرتی ہے؛ مادی تبدیلیوں کے بارے میں رجسٹرڈ انجینئرز کو مطلع کیا جائے گا۔">We may update this Policy from time to time. The "Last updated" date shows the current version; material changes will be notified to registered engineers.</p>
 
-<p style="margin-top:34px;font-size:12px;color:var(--muted);">Vostok Inc.（株式会社Vostok）· Hive Shibuya 4F, 1-23-10 Jinnan, Shibuya-ku, Tokyo 150-0041, Japan</p>
+<p style="margin-top:34px;font-size:12px;color:var(--muted);" data-ur="Vostok Inc.（株式会社Vostok）· Hive Shibuya 4F, 1-23-10 Jinnan, Shibuya-ku, Tokyo 150-0041, Japan">Vostok Inc.（株式会社Vostok）· Hive Shibuya 4F, 1-23-10 Jinnan, Shibuya-ku, Tokyo 150-0041, Japan</p>
 
 </div>
+
+<script>
+  (function(){
+    var nodes = document.querySelectorAll('[data-ur]');
+    nodes.forEach(function(el){ el.setAttribute('data-en', el.innerHTML); });
+    window.setLang = function(lang){
+      var ur = (lang === 'ur');
+      nodes.forEach(function(el){
+        el.innerHTML = ur ? el.getAttribute('data-ur') : el.getAttribute('data-en');
+      });
+      document.documentElement.lang = ur ? 'ur' : 'en';
+      document.documentElement.dir  = ur ? 'rtl' : 'ltr';
+      document.querySelectorAll('.langtoggle button').forEach(function(b){
+        b.classList.toggle('active', b.getAttribute('data-l') === lang);
+      });
+      try{ localStorage.setItem('vostok_lang', lang); }catch(e){}
+    };
+    var saved = 'en';
+    try{ saved = localStorage.getItem('vostok_lang') || 'en'; }catch(e){}
+    if(saved === 'ur') setLang('ur');
+  })();
+</script>
 </body>
 </html>

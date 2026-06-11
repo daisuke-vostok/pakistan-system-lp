@@ -31,6 +31,17 @@
   .paybox b{color:var(--orange);}
   footer{max-width:760px;margin:0 auto;padding:26px 16px 40px;font-size:12px;color:var(--muted);text-align:center;}
   footer a{color:var(--green);font-weight:700;}
+
+  /* language toggle */
+  .langtoggle{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;background:#fff;}
+  .langtoggle button{border:0;background:transparent;cursor:pointer;font-family:'Noto Sans',sans-serif;
+    font-weight:700;font-size:12.5px;padding:7px 14px;color:var(--muted);line-height:1;}
+  .langtoggle button.active{background:var(--green);color:#fff;}
+  .langtoggle button[data-l="ur"]{font-family:'Noto Nastaliq Urdu',serif;font-size:13.5px;}
+
+  /* ===== Urdu / RTL mode ===== */
+  html[dir="rtl"] body{font-family:'Noto Nastaliq Urdu','Noto Sans',serif;line-height:2.0;}
+  html[dir="rtl"] .urdu{display:none;}
 </style>
 </head>
 <body>
@@ -38,17 +49,23 @@
 <header>
   <div class="nav">
     <a class="brand" href="engineers.html"><span class="logo-mark">V</span>Vostok</a>
-    <a class="back" href="engineers.html">← Back to overview</a>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div class="langtoggle" role="group" aria-label="Language">
+        <button type="button" data-l="en" class="active" onclick="setLang('en')">EN</button>
+        <button type="button" data-l="ur" onclick="setLang('ur')">اردو</button>
+      </div>
+      <a class="back" href="engineers.html" data-ur="← اوور ویو پر واپس جائیں">← Back to overview</a>
+    </div>
   </div>
 </header>
 
 <div class="hero">
-  <h1>Your profile = your offer.</h1>
-  <p><b>The more you complete, the easier it is for us to introduce you to clients — and complete profiles typically receive higher offers.</b> Everything below is optional. Use the same email you applied with.</p>
+  <h1 data-ur="آپ کا پروفائل = آپ کی آفر۔">Your profile = your offer.</h1>
+  <p data-ur="<b>جتنا آپ مکمل کریں گے، ہمارے لیے آپ کو کلائنٹس سے متعارف کروانا اتنا ہی آسان ہوگا — اور مکمل پروفائلز کو عموماً زیادہ آفرز ملتی ہیں۔</b> نیچے دی گئی ہر چیز اختیاری ہے۔ وہی ای میل استعمال کریں جس سے آپ نے درخواست دی تھی۔"><b>The more you complete, the easier it is for us to introduce you to clients — and complete profiles typically receive higher offers.</b> Everything below is optional. Use the same email you applied with.</p>
   <div class="badges">
-    <span class="badge">Takes ~5 minutes</span>
-    <span class="badge">Boosts your introduction chances</span>
-    <span class="badge">Payout details → needed before first payment</span>
+    <span class="badge" data-ur="تقریباً 5 منٹ لگتے ہیں">Takes ~5 minutes</span>
+    <span class="badge" data-ur="آپ کے تعارف کے امکانات بڑھاتا ہے">Boosts your introduction chances</span>
+    <span class="badge" data-ur="ادائیگی کی تفصیلات → پہلی ادائیگی سے پہلے ضروری ہیں">Payout details → needed before first payment</span>
   </div>
   <br>
   <span class="urdu" lang="ur">جتنا مکمل پروفائل، اتنی آسان کلائنٹ سے انٹروڈکشن — اور مکمل پروفائلز کو عموماً بہتر آفر ملتی ہے۔ وہی ای میل استعمال کریں جس سے درخواست دی تھی۔</span>
@@ -61,12 +78,12 @@
 </div>
 
 <div class="payinfo">
-  <div class="paybox"><b>About payout details:</b> we pay monthly in USD via <b>Wise</b>. Your account holder name, IBAN and bank name are not required to register — but they will be needed before your first payment, so adding them now means you get paid without delay. They are stored securely and used only for sending your money.</div>
+  <div class="paybox" data-ur="<b>ادائیگی کی تفصیلات کے بارے میں:</b> ہم <b>Wise</b> کے ذریعے ماہانہ USD میں ادائیگی کرتے ہیں۔ رجسٹر کرنے کے لیے آپ کے اکاؤنٹ ہولڈر کا نام، IBAN اور بینک کا نام ضروری نہیں ہیں — لیکن آپ کی پہلی ادائیگی سے پہلے ان کی ضرورت ہوگی، اس لیے انہیں ابھی شامل کرنے کا مطلب ہے کہ آپ کو بغیر کسی تاخیر کے ادائیگی مل جائے گی۔ یہ محفوظ طریقے سے محفوظ کیے جاتے ہیں اور صرف آپ کی رقم بھیجنے کے لیے استعمال ہوتے ہیں۔"><b>About payout details:</b> we pay monthly in USD via <b>Wise</b>. Your account holder name, IBAN and bank name are not required to register — but they will be needed before your first payment, so adding them now means you get paid without delay. They are stored securely and used only for sending your money.</div>
 </div>
 
 <footer>
   Vostok Inc.（株式会社Vostok）· Hive Shibuya 4F, 1-23-10 Jinnan, Shibuya-ku, Tokyo 150-0041, Japan<br>
-  <a href="terms.html">Terms of Use</a> · <a href="privacy.html">Privacy Policy</a> · © 2026 Vostok Inc.
+  <a href="terms.html" data-ur="استعمال کی شرائط">Terms of Use</a> · <a href="privacy.html" data-ur="رازداری کی پالیسی">Privacy Policy</a> · © 2026 Vostok Inc.
 </footer>
 
 <script>
@@ -74,6 +91,28 @@
   var src = 'https://airtable.com/embed/appdxTkBo7LBmoEdw/shrFIhlKjk1PAMuWv';
   if (email) src += '?prefill_Email=' + encodeURIComponent(email);
   document.getElementById('pf').src = src;
+</script>
+
+<script>
+  (function(){
+    var nodes = document.querySelectorAll('[data-ur]');
+    nodes.forEach(function(el){ el.setAttribute('data-en', el.innerHTML); });
+    window.setLang = function(lang){
+      var ur = (lang === 'ur');
+      nodes.forEach(function(el){
+        el.innerHTML = ur ? el.getAttribute('data-ur') : el.getAttribute('data-en');
+      });
+      document.documentElement.lang = ur ? 'ur' : 'en';
+      document.documentElement.dir  = ur ? 'rtl' : 'ltr';
+      document.querySelectorAll('.langtoggle button').forEach(function(b){
+        b.classList.toggle('active', b.getAttribute('data-l') === lang);
+      });
+      try{ localStorage.setItem('vostok_lang', lang); }catch(e){}
+    };
+    var saved = 'en';
+    try{ saved = localStorage.getItem('vostok_lang') || 'en'; }catch(e){}
+    if(saved === 'ur') setLang('ur');
+  })();
 </script>
 
 </body>
