@@ -42,7 +42,6 @@
   .langtoggle button.active{background:var(--green);color:#fff;}
   .langtoggle button[data-l="ur"]{font-family:'Noto Nastaliq Urdu',serif;font-size:13.5px;}
 
-  /* urdu summary block (used in EN mode only) */
   .urdu{direction:rtl;text-align:right;font-family:'Noto Nastaliq Urdu',serif;font-size:14.5px;line-height:2.25;
     color:var(--green-deep);background:var(--green-soft);border-right:4px solid var(--green);
     border-radius:10px;padding:10px 16px;margin-top:16px;}
@@ -61,8 +60,7 @@
   .kicker{font-size:12px;letter-spacing:4px;font-weight:700;color:#ffd9a8;text-transform:uppercase;}
   .hero h1{font-weight:900;font-size:clamp(30px,5vw,48px);line-height:1.22;margin:16px auto 14px;max-width:760px;}
   .hero p.sub{font-size:17px;opacity:.94;max-width:580px;margin:0 auto;}
-  .hero .urdu{background:rgba(255,255,255,.12);border-right-color:#ffd9a8;color:#fdf4e3;max-width:580px;margin:20px auto 0;}
-  .hero-cta{margin-top:30px;}
+  .hero  .hero-cta{margin-top:30px;}
   .hero .btn{font-size:17px;padding:18px 40px;}
 
   /* trust strip */
@@ -127,8 +125,7 @@
     padding:46px 30px;text-align:center;}
   .cta h2{color:#fff;}
   .cta p{opacity:.92;font-size:15px;max-width:560px;margin:8px auto 0;}
-  .cta .urdu{background:rgba(255,255,255,.12);border-right-color:#ffd9a8;color:#fdf4e3;max-width:560px;margin:18px auto 0;}
-  .cta .btn{margin-top:24px;font-size:16.5px;padding:17px 38px;}
+  .cta  .cta .btn{margin-top:24px;font-size:16.5px;padding:17px 38px;}
 
   footer{margin-top:60px;border-top:1px solid var(--line);padding:36px 0 30px;font-size:13px;color:var(--muted);}
   .fgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:start;}
@@ -154,9 +151,7 @@
   html[dir="rtl"] .fgrid{direction:rtl;}
   html[dir="rtl"] .frow{flex-direction:row-reverse;}
   html[dir="rtl"] .kicker,html[dir="rtl"] .tag{letter-spacing:0;}
-  /* hide the EN-mode Urdu summary blocks when the whole page is already Urdu */
-  html[dir="rtl"] .urdu{display:none;}
-</style>
+  </style>
 </head>
 <body>
 
@@ -178,7 +173,6 @@
     <div class="kicker" data-ur="ووستوک انجینئرنگ نیٹ ورک">Vostok Engineering Network</div>
     <h1 data-ur="جاپان کے ساتھ کام کریں۔<br>جاپانی زبان کی ضرورت نہیں۔">Work with Japan.<br>No Japanese required.</h1>
     <p class="sub" data-ur="جاپانی کمپنیوں کے ساتھ طویل مدتی ریموٹ پروجیکٹس۔ کلائنٹ ہم سنبھالتے ہیں — آپ صرف کوڈ لکھیں۔">Long-term remote projects with Japanese companies. We handle the client — you write the code.</p>
-    <div class="urdu" lang="ur">جاپانی کمپنیوں کے ساتھ طویل مدتی ریموٹ پروجیکٹس۔ کلائنٹ ہم سنبھالتے ہیں — آپ صرف کوڈ لکھیں۔</div>
     <div class="hero-cta">
       <a class="btn btn-orange" href="apply.html?ls=LP-A" target="_blank" rel="noopener" data-ur='ایک منٹ میں درخواست دیں <span class="arw">→</span>'>Apply in 1 minute <span class="arw">→</span></a>
       <span class="btn-note" data-ur="کوئی اکاؤنٹ نہیں · کوئی فیس نہیں — کبھی نہیں">No account needed · No fees — ever</span>
@@ -228,7 +222,6 @@
       <div class="card"><div class="ic"><svg class="ic-svg" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></div><h3 data-ur="طویل مدتی کام">Long-term work</h3><p data-ur="ماہ بہ ماہ پروجیکٹس جو اکثر برسوں چلتے ہیں۔">Month-to-month projects that often run for years.</p></div>
       <div class="card"><div class="ic"><svg class="ic-svg" viewBox="0 0 24 24"><path d="M12 3a6.5 6.5 0 1 0 9 9 9 9 0 1 1-9-9z"/></svg></div><h3 data-ur="ثقافت کا احترام">Culture respected</h3><p data-ur="نماز کے اوقات اور رمضان کی منصوبہ بندی پہلے سے۔ ہمیشہ۔">Prayer times &amp; Ramadan are planned up front. Always.</p></div>
     </div>
-    <div class="urdu" lang="ur">جاپانی کمپنیاں براہِ راست بین الاقوامی فری لانسرز کو ہائر نہیں کرتیں — Vostok آپ کا پل ہے۔ واضح اسپیسیفیکیشن، طویل مدتی کام، اور نماز و رمضان کا مکمل احترام۔</div>
   </section>
 
   <section id="japan" class="center">
@@ -240,7 +233,6 @@
       <div class="card"><div class="ic"><svg class="ic-svg" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></div><h3 data-ur="تعلقات، عارضی کام نہیں">Relationships, not gigs</h3><p data-ur="جاپانی کمپنیاں دس سستے ایک بار کے کاموں کے بجائے ایک قابلِ اعتماد پارٹنر کو برسوں ترجیح دیتی ہیں۔">Japanese companies prefer one trusted partner for years over ten cheap one-offs.</p></div>
       <div class="card"><div class="ic"><svg class="ic-svg" viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3 data-ur="ایک پل جس کی تصدیق ممکن ہے">A bridge you can verify</h3><p data-ur='ووستوک ٹوکیو، جاپان سے چلایا جاتا ہے — دیکھیں <a href="https://vostok.co.jp/" target="_blank" rel="noopener" style="color:var(--green-deep);font-weight:700;text-decoration:underline;">vostok.co.jp</a>۔ معاہدے سے پہلے ہم سے کچھ بھی پوچھیں — شفافیت ہی ہماری شرط ہے۔'>Vostok is operated from Tokyo, Japan — see <a href="https://vostok.co.jp/" target="_blank" rel="noopener" style="color:var(--green-deep);font-weight:700;text-decoration:underline;">vostok.co.jp</a>. Ask us anything before signing — transparency is the deal.</p></div>
     </div>
-    <div class="urdu" lang="ur">جاپانی کاروباری ثقافت معاہدوں کے احترام، طویل مدتی تعلقات اور وقت پر ادائیگی کے لیے مشہور ہے۔ Vostok ٹوکیو، جاپان سے کام کرتا ہے — معاہدے سے پہلے ہم سے کچھ بھی پوچھیں۔</div>
   </section>
 
   <section id="how">
@@ -268,7 +260,6 @@
       </div>
     </details>
     <div class="hl"><h3 data-ur="ایک اصول جو آپ کی حفاظت کرتا ہے">One rule that protects you</h3><p data-ur="اگر کلائنٹ کبھی براہِ راست رابطہ کرے تو اسے ووستوک ہب کی طرف بھیج دیں۔ کوئی کلائنٹ-سائیڈ سیاست نہیں، کوئی آدھی رات کی کالز نہیں — یہ ہمارا کام ہے۔">If the client ever contacts you directly, redirect them to the Vostok hub. No client-side politics, no midnight calls — that's our job.</p></div>
-    <div class="urdu" lang="ur">آپ آزاد کنٹریکٹر ہیں — ملازم نہیں۔ کام صرف Vostok کے ذریعے آتا ہے۔ ادائیگی ماہانہ USD میں (Wise / Payoneer)۔ ٹرائل بھی معاوضہ شدہ ہے۔</div>
   </section>
 
   <section id="steps" class="center">
@@ -280,7 +271,6 @@
       <div class="step"><h3 data-ur="معاوضہ شدہ ٹرائل (2–4 ہفتے)">Paid trial (2–4 weeks)</h3><p data-ur="حقیقی پروجیکٹ پر حقیقی ٹاسک — معاوضہ کے ساتھ۔ آپ بھی ہمیں پرکھیں۔">A real task on a real project — paid. You evaluate us too.</p></div>
       <div class="step"><h3 data-ur="ماہانہ اینگیجمنٹ">Monthly engagement</h3><p data-ur="اسپیسیفیکیشن اندر، کوڈ باہر، ماہانہ انوائس۔ بہتر کارکردگی → زیادہ ریٹ۔">Specs in, code out, invoice monthly. Strong delivery → higher rate.</p></div>
     </div>
-    <div class="urdu" lang="ur">درخواست (1 منٹ) ← اسکریننگ اور انٹرویو ← معاوضہ شدہ ٹرائل (2–4 ہفتے) ← ماہانہ کام اور ریٹ میں اضافہ۔</div>
     <div style="margin-top:28px;">
       <a class="btn btn-orange" href="apply.html?ls=LP-A" target="_blank" rel="noopener" data-ur='مرحلہ 1 شروع کریں — درخواست دیں <span class="arw">→</span>'>Start Step 1 — Apply <span class="arw">→</span></a>
     </div>
@@ -296,7 +286,6 @@
       <div class="card"><div class="ic"><svg class="ic-svg" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 4v4M8 13h.01M16 13h.01M9 17h6"/></svg></div><h3 data-ur="AI-نیٹو ورک فلو">AI-native workflow</h3><p data-ur="جدید AI ٹولنگ کے ساتھ تصدیق شدہ، پروڈکشن-گریڈ آؤٹ پٹ فراہم کریں۔">Ship verified, production-grade output with modern AI tooling.</p></div>
       <div class="card"><div class="ic"><svg class="ic-svg" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div><h3 data-ur="ریٹ اور کردار میں ترقی">Rate &amp; role growth</h3><p data-ur="جائزے، طویل اینگیجمنٹ، لیڈ رولز — کارکردگی سے حاصل۔">Reviews, longer engagements, lead roles — earned by delivery.</p></div>
     </div>
-    <div class="urdu" lang="ur">تقریباً 4% قبولیت — اسکریننگ پاس کرنا خود ایک سند ہے۔ تصدیق شدہ اسکل اسکور، کوچنگ، اور کارکردگی کی بنیاد پر ترقی۔</div>
   </section>
 
   <section id="faq" class="faq">
@@ -308,13 +297,11 @@
     <details><summary data-ur="اگر کلائنٹ مجھے براہِ راست پیغام دے تو؟">What if the client messages me directly?</summary><div class="inner"><p data-ur="شائستگی سے اسے ووستوک ہب کی طرف بھیجیں۔ تمام ہدایات ہمارے ذریعے آتی ہیں — یہ آپ اور پروجیکٹ کی حفاظت کرتا ہے۔">Politely redirect them to the Vostok hub. All instructions flow through us — this protects you and the project.</p></div></details>
     <details><summary data-ur="مجھے کیسے اور کب ادائیگی ہوتی ہے؟">How and when am I paid?</summary><div class="inner"><p data-ur="ماہانہ USD میں بین الاقوامی ٹرانسفر کے ذریعے (مثلاً Wise / Payoneer)، آپ کی آفر کے ریٹ کے مطابق۔ ٹرائل بھی معاوضہ شدہ ہے۔">Monthly in USD via international transfer (e.g., Wise / Payoneer), per the rate in your offer. The trial is paid too.</p></div></details>
     <details><summary data-ur="پروجیکٹس کے درمیان کیا ہوتا ہے؟">What happens between projects?</summary><div class="inner"><p data-ur="آپ ہمارے ٹیلنٹ پول میں رہتے ہیں — کوئی بلا معاوضہ پابندی نہیں۔ آزادانہ دوسرا کام کریں؛ مماثل پروجیکٹ کھلنے پر ہم رابطہ کرتے ہیں۔">You stay in our talent pool — no unpaid obligation. Take other work freely; we reach out when a matching project opens.</p></div></details>
-    <div class="urdu" lang="ur">جاپانی زبان ضروری نہیں۔ دوسرے کلائنٹس رکھ سکتے ہیں۔ ادائیگی ماہانہ USD میں۔ پروجیکٹس کے درمیان کوئی بلا معاوضہ پابندی نہیں۔</div>
   </section>
 
   <div class="notice">
     <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a33d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg><span data-ur="بھرتی فراڈ سے متعلق ایک نوٹ">A note on recruitment fraud</span></h3>
     <p data-ur="Vostok درخواست اور انٹرویو کے دوران آپ سے کبھی پیسے، فیس یا مالی تفصیلات (کارڈ نمبر، اکاؤنٹ پاس ورڈز) <b>نہیں</b> مانگے گا۔ ہمارے ٹرائل ٹاسک <b>معاوضہ شدہ ہوتے ہیں — کبھی الٹ نہیں</b>۔ ادائیگی کی تفصیلات صرف معاہدہ سائن کرنے کے بعد لی جاتی ہیں۔ اگر کوئی Vostok کا نمائندہ بن کر آپ سے ادائیگی مانگے، تو یہ فراڈ ہے — ہمیں اطلاع دیں۔">Vostok will <b>never</b> ask you for money, fees, or financial details (card numbers, account passwords) during application and interviews. Our trial tasks are <b>paid — never the other way around</b>. Payout details are collected only after you sign your contract. If anyone claiming to represent Vostok asks you for payment, it's a scam — report it to us.</p>
-    <div class="urdu" lang="ur" style="margin-top:10px;">Vostok بھرتی کے عمل میں آپ سے کبھی پیسے یا مالی معلومات نہیں مانگے گا۔ ٹرائل ٹاسک معاوضہ شدہ ہوتا ہے — الٹ کبھی نہیں۔ کوئی Vostok کے نام پر پیسے مانگے تو یہ فراڈ ہے۔</div>
   </div>
 
   <div style="margin-top:48px;background:var(--bg-soft);border:1px solid var(--line);border-radius:18px;padding:28px 30px;display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;">
@@ -329,7 +316,6 @@
   <div class="cta">
     <h2 data-ur="جاپان کے لیے بنانے کو تیار ہیں؟">Ready to build for Japan?</h2>
     <p data-ur="آپ اپنی انجینئرنگ لائیں۔ ہم مارکیٹ، اسپیسیفیکیشن اور پل لاتے ہیں۔">Bring your engineering. We bring the market, the specs, and the bridge.</p>
-    <div class="urdu" lang="ur">آپ انجینئرنگ لائیں — مارکیٹ، اسپیسیفیکیشن اور پل ہم لائیں گے۔</div>
     <a class="btn btn-orange" href="apply.html?ls=LP-A" target="_blank" rel="noopener" data-ur='ایک منٹ میں درخواست دیں <span class="arw">→</span>'>Apply in 1 minute <span class="arw">→</span></a>
     <span class="btn-note" data-ur="کوئی اکاؤنٹ نہیں · کوئی فیس نہیں · 3 کاروباری دنوں میں جواب">No account · No fees · Reply within 3 business days</span>
   </div>
