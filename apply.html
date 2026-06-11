@@ -23,9 +23,49 @@
   .badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 16px;font-size:12.5px;}
   .formcard{max-width:760px;margin:-70px auto 0;padding:0 16px 40px;}
   .formbox{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 24px 60px -24px rgba(21,32,26,.25);overflow:hidden;}
-  .formbox iframe{display:block;width:100%;height:1150px;border:0;}
-  .note{text-align:center;font-size:12.5px;color:var(--muted);margin-top:14px;}
-  .note a{color:var(--green);font-weight:700;}
+  
+  /* native form styles */
+  .formbox-inner { padding: 36px 28px; }
+  .field { margin-bottom: 24px; text-align: left; }
+  .field label { display: block; font-weight: 700; font-size: 14.5px; margin-bottom: 8px; color: #2a322a; }
+  .field input[type="text"], .field input[type="email"], .field input[type="tel"], .field select { width: 100%; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 10px; font-size: 15px; font-family: inherit; transition: border-color 0.2s; background: #fafcfa; color: var(--ink); }
+  .field input:focus, .field select:focus { outline: none; border-color: var(--green); background: #fff; }
+  .field .desc { font-size: 12.5px; color: var(--muted); margin-top: 6px; display: block; }
+  
+  .chip-group { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip { padding: 8px 18px; border: 1.5px solid var(--line); border-radius: 999px; font-size: 13.5px; font-weight: 600; color: var(--muted); cursor: pointer; transition: all 0.2s; user-select: none; background: #fff; }
+  .chip.selected { background: var(--green-soft); color: var(--green); border-color: var(--green); }
+  
+  .terms-box { border: 1.5px solid var(--line); border-radius: 10px; padding: 18px; height: 160px; overflow-y: auto; background: #fafcfa; font-size: 13px; color: #525852; margin-bottom: 14px; text-align: left; }
+  .terms-box h4 { font-weight: 700; color: var(--ink); margin-bottom: 8px; font-size: 14px; }
+  .terms-box p { margin-bottom: 12px; line-height: 1.6; }
+  .terms-box::-webkit-scrollbar { width: 6px; }
+  .terms-box::-webkit-scrollbar-thumb { background: #cbd2cb; border-radius: 4px; }
+  
+  .consent-wrap { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 32px; text-align: left; }
+  .consent-wrap input { margin-top: 5px; width: 20px; height: 20px; cursor: pointer; accent-color: var(--green); flex: 0 0 auto; }
+  .consent-wrap label { font-size: 14px; font-weight: 500; cursor: pointer; color: var(--ink); line-height: 1.5; }
+  .consent-wrap input:disabled + label { color: var(--muted); cursor: not-allowed; }
+  
+  .submit-btn { width: 100%; padding: 18px; background: var(--green); color: #fff; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; transition: transform 0.2s, background 0.2s, box-shadow 0.2s; font-family: inherit; }
+  .submit-btn:hover:not(:disabled) { background: var(--green-deep); transform: translateY(-2px); box-shadow: 0 10px 20px -10px rgba(28,122,72,.6); }
+  .submit-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; box-shadow: none; }
+  
+  .error-msg { color: #d93025; font-size: 13.5px; font-weight: 600; margin-top: 12px; display: none; text-align: center; }
+  
+  .thanks-msg { text-align: center; padding: 70px 20px; display: none; }
+  .thanks-msg .icon { width: 72px; height: 72px; border-radius: 50%; background: var(--green-soft); color: var(--green); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; }
+  .thanks-msg .icon svg { width: 36px; height: 36px; }
+  .thanks-msg h2 { font-size: 26px; font-weight: 900; margin-bottom: 14px; }
+  .thanks-msg p { color: var(--muted); font-size: 15.5px; margin-bottom: 28px; line-height: 1.6; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .thanks-msg .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--green); color: #fff; padding: 14px 28px; border-radius: 999px; font-weight: 700; font-size: 15px; transition: transform 0.2s; box-shadow: 0 10px 20px -10px rgba(28,122,72,.6); }
+  .thanks-msg .btn:hover { transform: translateY(-2px); background: var(--green-deep); }
+  
+  /* fix rtl alignment */
+  html[dir="rtl"] .field { text-align: right; }
+  html[dir="rtl"] .terms-box { text-align: right; }
+  html[dir="rtl"] .consent-wrap { text-align: right; }
+
   footer{max-width:760px;margin:0 auto;padding:18px 16px 40px;font-size:12px;color:var(--muted);text-align:center;}
   footer a{color:var(--green);font-weight:700;}
 
@@ -66,10 +106,82 @@
 </div>
 
 <div class="formcard">
-  <div class="formbox">
-    <iframe id="af" src="" title="Vostok application form" loading="eager"></iframe>
+  <div class="formbox" id="form-container">
+    <div class="formbox-inner">
+      <form id="applyForm">
+        <div class="field">
+          <label data-ur="پورا نام *">Full Name *</label>
+          <input type="text" id="fname" required placeholder="e.g. Ali Ahmed" data-ur-placeholder="مثال: علی احمد">
+        </div>
+        <div class="field">
+          <label data-ur="ای میل *">Email *</label>
+          <input type="email" id="femail" required placeholder="name@example.com" data-ur-placeholder="name@example.com">
+          <span class="desc" data-ur="ہم آپ کو انٹرویو کی دعوت اسی ای میل پر بھیجیں گے۔">We will send interview invitations to this email.</span>
+        </div>
+        <div class="field">
+          <label data-ur="واٹس ایپ (اختیاری لیکن تجویز کردہ)">WhatsApp (Optional but recommended)</label>
+          <input type="tel" id="fwa" placeholder="+92 300 1234567" data-ur-placeholder="+92 300 1234567">
+        </div>
+        
+        <div class="field">
+          <label data-ur="بنیادی مہارتیں (جو آپ پر لاگو ہوں انہیں منتخب کریں) *">Primary Skills (Select all that apply) *</label>
+          <div class="chip-group" id="skillsContainer">
+            <div class="chip" data-val="React/Next.js">React/Next.js</div>
+            <div class="chip" data-val="Vue/Nuxt">Vue/Nuxt</div>
+            <div class="chip" data-val="Node.js">Node.js</div>
+            <div class="chip" data-val="Python">Python</div>
+            <div class="chip" data-val="Ruby on Rails">Ruby on Rails</div>
+            <div class="chip" data-val="Go">Go</div>
+            <div class="chip" data-val="PHP/Laravel">PHP/Laravel</div>
+            <div class="chip" data-val="AWS/GCP">AWS/GCP</div>
+            <div class="chip" data-val="Mobile (Flutter/React Native)">Mobile</div>
+            <div class="chip" data-val="Other" data-ur="دیگر">Other</div>
+          </div>
+          <input type="hidden" id="fskills" required>
+        </div>
+
+        <div class="field">
+          <label data-ur="پیشے کا تجربہ *">Years of Experience *</label>
+          <select id="fexp" required>
+            <option value="" disabled selected data-ur="منتخب کریں...">Select...</option>
+            <option value="0-1" data-ur="1 سال سے کم">Less than 1 year</option>
+            <option value="1-3" data-ur="1 سے 3 سال">1 - 3 years</option>
+            <option value="3-5" data-ur="3 سے 5 سال">3 - 5 years</option>
+            <option value="5+" data-ur="5+ سال">5+ years</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label data-ur="شرائط و ضوابط *">Terms and Conditions *</label>
+          <div class="terms-box" id="termsBox">
+            <h4 data-ur="ووستوک انجینئرنگ نیٹ ورک - شرائط کا خلاصہ">Vostok Engineering Network - Terms Summary</h4>
+            <p data-ur="رجسٹریشن مفت ہے اور اس سے نوکری، ملازمت یا ادائیگی کی کوئی ضمانت یا ذمہ داری پیدا نہیں ہوتی۔ اصل کام صرف الگ تحریری کنٹریکٹر معاہدے کے تحت ہوتا ہے۔">Registering is free and creates no job, employment, or payment obligation for either side. Actual work only happens under a separate written contractor agreement.</p>
+            <p data-ur="کلائنٹ کی معلومات خفیہ رکھیں، صرف اپنی اصل شناخت استعمال کریں (صرف ایک اصلی شناخت)۔">Keep client information confidential, be yourself (one real identity).</p>
+            <p data-ur="کوئی بھی تنازعہ جاپانی قانون کے تحت سنگاپور میں ثالثی سے حل ہوگا۔">Any dispute is resolved by arbitration in Singapore under Japanese law.</p>
+            <p data-ur='براہ کرم ہماری مکمل <a href="terms.html" target="_blank" style="color:var(--green);font-weight:bold;">شرائط</a> اور <a href="privacy.html" target="_blank" style="color:var(--green);font-weight:bold;">رازداری کی پالیسی</a> پڑھیں۔ یہ یقینی بنانے کے لیے کہ آپ نے انہیں دیکھ لیا ہے، براہ کرم اس باکس کو آخر تک اسکرول کریں۔'>Please read our full <a href="terms.html" target="_blank" style="color:var(--green);font-weight:bold;">Terms of Use</a> and <a href="privacy.html" target="_blank" style="color:var(--green);font-weight:bold;">Privacy Policy</a>. To ensure you have seen this, please scroll this box to the bottom.</p>
+          </div>
+          <div class="consent-wrap">
+            <input type="checkbox" id="fconsent" required disabled>
+            <label for="fconsent" id="consentLabel" data-ur="میں نے شرائط اور رازداری کی پالیسی کو پڑھ کر قبول کر لیا ہے۔ (چیک کرنے کے لیے اوپر دیے گئے باکس کو آخر تک اسکرول کریں)">I have read and agree to the Terms and Privacy Policy. (Scroll the box above to the end to enable)</label>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn" disabled data-ur="درخواست جمع کروائیں">Submit Application</button>
+        <div class="error-msg" id="errorMsg" data-ur="جمع کروانے میں ایک مسئلہ تھا۔ براہ کرم دوبارہ کوشش کریں۔">There was a problem submitting. Please try again.</div>
+      </form>
+    </div>
   </div>
-  <p class="note" data-ur='جمع کروا کر، آپ ہماری <a href="terms.html" target="_blank" rel="noopener">استعمال کی شرائط</a> اور <a href="privacy.html" target="_blank" rel="noopener">رازداری کی پالیسی</a> سے اتفاق کرتے ہیں۔'>By submitting, you agree to our <a href="terms.html" target="_blank" rel="noopener">Terms of Use</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+
+  <div class="formbox thanks-msg" id="thanks-container">
+    <div class="icon">
+      <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+    </div>
+    <h2 data-ur="آپ کی درخواست جمع ہو گئی ہے!">Application Submitted!</h2>
+    <p data-ur="ووستوک نیٹ ورک میں شامل ہونے کا شکریہ۔ ہم آپ کے پروفائل کا جائزہ لیں گے اور اگر آپ کی مہارتیں ہمارے کلائنٹس سے مطابقت رکھتی ہیں تو آپ سے رابطہ کریں گے۔">Thank you for joining the Vostok Network. We will review your profile and reach out if your skills match our clients.</p>
+    <p data-ur="اگلا قدم: اپنے انٹرویو کے امکانات کو بڑھانے کے لیے اپنے مائی پیج (My Page) کو مکمل کریں۔">Next step: Complete your My Page to increase your chances of an interview.</p>
+    <br>
+    <a href="profile.html" class="btn" data-ur="اپنے مائی پیج پر جائیں →">Go to My Page →</a>
+  </div>
 </div>
 
 <footer>
@@ -77,26 +189,113 @@
   <a href="terms.html" data-ur="استعمال کی شرائط">Terms of Use</a> · <a href="privacy.html" data-ur="رازداری کی پالیسی">Privacy Policy</a> · © 2026 Vostok Inc.
 </footer>
 
-<script>
+<script type="module">
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+  
+  // TO USER: Replace placeholders with your actual Supabase keys
+  const supabase = createClient('<PROJECT_URL>', '<ANON_KEY>');
+
   var ls = new URLSearchParams(location.search).get('ls') || 'LP-A';
   var allowed = ['LP-A','LP-B','Upwork','Referral','University','Other'];
   if (allowed.indexOf(ls) === -1) ls = 'Other';
-  document.getElementById('af').src =
-    'https://airtable.com/embed/appdxTkBo7LBmoEdw/shrf2GwFUFdre9Udz'
-    + '?prefill_Lead%20Source=' + encodeURIComponent(ls)
-    + '&hide_Lead%20Source=true';
-</script>
 
+  // Chips logic
+  const chips = document.querySelectorAll('.chip');
+  const skillsInput = document.getElementById('fskills');
+  let selectedSkills = [];
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chip.classList.toggle('selected');
+      const val = chip.getAttribute('data-val');
+      if (chip.classList.contains('selected')) {
+        selectedSkills.push(val);
+      } else {
+        selectedSkills = selectedSkills.filter(s => s !== val);
+      }
+      skillsInput.value = selectedSkills.join(',');
+    });
+  });
+
+  // Scroll to enable terms
+  const termsBox = document.getElementById('termsBox');
+  const consentCb = document.getElementById('fconsent');
+  const submitBtn = document.getElementById('submitBtn');
+
+  termsBox.addEventListener('scroll', () => {
+    if (termsBox.scrollHeight - termsBox.scrollTop <= termsBox.clientHeight + 4) {
+      consentCb.disabled = false;
+    }
+  });
+
+  consentCb.addEventListener('change', () => {
+    submitBtn.disabled = !consentCb.checked;
+  });
+
+  // Form submit
+  const form = document.getElementById('applyForm');
+  const errorMsg = document.getElementById('errorMsg');
+  const formContainer = document.getElementById('form-container');
+  const thanksContainer = document.getElementById('thanks-container');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!consentCb.checked) return;
+    
+    const isUr = document.documentElement.lang === 'ur';
+    if (selectedSkills.length === 0) {
+      alert(isUr ? "براہ کرم کم از کم ایک مہارت منتخب کریں۔" : "Please select at least one skill.");
+      return;
+    }
+
+    submitBtn.disabled = true;
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = isUr ? "جمع ہو رہا ہے..." : "Submitting...";
+    errorMsg.style.display = 'none';
+
+    try {
+      const { error } = await supabase.from('applicants').insert({
+        full_name: document.getElementById('fname').value,
+        email: document.getElementById('femail').value,
+        whatsapp: document.getElementById('fwa').value || null,
+        primary_skills: selectedSkills,
+        years_experience: document.getElementById('fexp').value,
+        lead_source: ls,
+        locale: isUr ? 'ur' : 'en',
+        consent_terms: true,
+        consent_at: new Date().toISOString()
+      });
+
+      if (error) throw error;
+
+      formContainer.style.display = 'none';
+      thanksContainer.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    } catch (err) {
+      console.error(err);
+      errorMsg.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+    }
+  });
 </script>
 
 <script>
   (function(){
     var nodes = document.querySelectorAll('[data-ur]');
     nodes.forEach(function(el){ el.setAttribute('data-en', el.innerHTML); });
+    
+    var pNodes = document.querySelectorAll('[data-ur-placeholder]');
+    pNodes.forEach(function(el){ el.setAttribute('data-en-placeholder', el.getAttribute('placeholder')); });
+
     window.setLang = function(lang){
       var ur = (lang === 'ur');
       nodes.forEach(function(el){
         el.innerHTML = ur ? el.getAttribute('data-ur') : el.getAttribute('data-en');
+      });
+      pNodes.forEach(function(el){
+        el.setAttribute('placeholder', ur ? el.getAttribute('data-ur-placeholder') : el.getAttribute('data-en-placeholder'));
       });
       document.documentElement.lang = ur ? 'ur' : 'en';
       document.documentElement.dir  = ur ? 'rtl' : 'ltr';

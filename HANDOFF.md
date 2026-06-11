@@ -30,10 +30,10 @@
 
 ## 3. 全体のフェーズ計画（背景）
 - **役割分担**: エンジニア対面(応募/認証/マイページ)=将来Supabase / 社内運用(企業/案件/マッチング/粗利)=Airtable。突合はメールアドレス。最終的にSupabaseへ一本化しAirtableは卒業。
-- **Phase 1（Supabase不要・今ここ）**: LP/apply/profile/規約の EN↔UR トグル、$1,500–3,000の金額削除、vostok.co.jpリンク追加。
-- **Phase 2（Supabase導入後）**: 応募フォームを自作化（完全EN/UR・チップUI・規約スクロール読了で同意解放・その場サンクス画面）→ Supabaseに保存。これでエンジニア画面からAirtable要素が消える。
-- **Phase 3**: マイページ＝Googleログイン＋マジックリンクの2択認証→自分のデータを直接編集（手動マージ問題が消える）。
-  - 次担当へ: Phase2/3に着手する場合は Supabase無料プロジェクトのURL/anon keyが必要。
+- **Phase 1（Supabase不要・完了）**: LP/apply/profile/規約の EN↔UR トグル、$1,500–3,000の金額削除、vostok.co.jpリンク追加。
+- **Phase 2（Supabase導入後・実装済/キー設定待ち）**: 応募フォームを自作化（完全EN/UR・チップUI・規約スクロール読了で同意解放・その場サンクス画面）→ Supabaseに保存。これでエンジニア画面からAirtable要素が消滅。
+- **Phase 3（実装済/キー設定待ち）**: マイページ＝Googleログイン＋マジックリンクの2択認証→自分のデータを直接編集（手動マージ問題が消滅）。
+  - 次担当・運用者へ: 現在のコード内の `<PROJECT_URL>` および `<ANON_KEY>` を実際のものに置換し、Supabase側でRLSとAuth(Google/Email)の設定を完了させてください。
 
 ## 4. Phase 1 の現状
 

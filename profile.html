@@ -24,7 +24,19 @@
   .badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 16px;font-size:12.5px;}
   .formcard{max-width:760px;margin:-70px auto 0;padding:0 16px 12px;}
   .formbox{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 24px 60px -24px rgba(21,32,26,.25);overflow:hidden;}
-  .formbox iframe{display:block;width:100%;height:2050px;border:0;}
+  
+  /* native form styles */
+  .formbox-inner { padding: 36px 28px; }
+  .field { margin-bottom: 24px; text-align: left; }
+  .field label { display: block; font-weight: 700; font-size: 14.5px; margin-bottom: 8px; color: #2a322a; }
+  .field input[type="text"], .field input[type="email"], .field input[type="url"], .field input[type="date"], .field select { width: 100%; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 10px; font-size: 15px; font-family: inherit; transition: border-color 0.2s; background: #fafcfa; color: var(--ink); }
+  .field input:focus, .field select:focus { outline: none; border-color: var(--green); background: #fff; }
+  
+  .submit-btn { width: 100%; padding: 16px; background: var(--green); color: #fff; border: none; border-radius: 12px; font-size: 15.5px; font-weight: 700; cursor: pointer; transition: transform 0.2s, background 0.2s, box-shadow 0.2s; font-family: inherit; }
+  .submit-btn:hover:not(:disabled) { background: var(--green-deep); transform: translateY(-2px); box-shadow: 0 10px 20px -10px rgba(28,122,72,.6); }
+  .submit-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; box-shadow: none; }
+  
+  html[dir="rtl"] .field { text-align: right; }
   .payinfo{max-width:760px;margin:18px auto 0;padding:0 16px;}
   .paybox{background:#fff7ef;border:1.5px solid var(--orange);border-radius:14px;padding:16px 20px;font-size:13px;color:#6b4326;}
   .paybox b{color:var(--orange);}
@@ -67,9 +79,98 @@
   </div>
 </div>
 
-<div class="formcard">
+<div class="formcard" id="auth-section">
+  <div class="formbox" style="padding:46px 24px; text-align:center;">
+    <h3 style="font-size:24px; font-weight:900; margin-bottom:12px;" data-ur="لاگ ان کریں">Log In</h3>
+    <p style="color:var(--muted); font-size:15px; margin-bottom:32px;" data-ur="اپنا پروفائل مکمل کرنے کے لیے لاگ ان کریں۔">Log in to complete your profile.</p>
+    
+    <button id="googleLogin" class="submit-btn" style="background:#fff; color:#444; border:1.5px solid var(--line); box-shadow:0 4px 12px -4px rgba(0,0,0,.05); display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:28px;">
+      <svg width="22" height="22" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.5 1.2 9 3.5l6.5-6.5C35.5 2.5 30 0 24 0 14.5 0 6.5 5.5 2.5 13.5l7.5 6C12 11.5 17.5 9.5 24 9.5z"/><path fill="#4285F4" d="M47.5 24.5c0-1.5-.1-3.5-.5-5H24v9.5h13.5c-.5 3-2 5.5-4.5 7l7.5 6C45 38 47.5 32 47.5 24.5z"/><path fill="#FBBC05" d="M10.5 28c-.5-1.5-.5-3-.5-4.5s0-3 .5-4.5l-7.5-6C1 16 0 20 0 24s1 8 3 11l7.5-6z"/><path fill="#34A853" d="M24 48c6.5 0 12-2 16.5-6l-7.5-6c-2.5 1.5-5.5 2.5-9 2.5-6.5 0-12-4.5-14-10.5l-7.5 6C6.5 42.5 14.5 48 24 48z"/></svg>
+      <span data-ur="گوگل کے ساتھ لاگ ان کریں">Continue with Google</span>
+    </button>
+    
+    <div style="display:flex; align-items:center; gap:12px; color:var(--muted); font-size:13.5px; margin-bottom:28px;">
+      <hr style="flex:1; border:none; border-top:1px solid var(--line);"><span data-ur="یا">or</span><hr style="flex:1; border:none; border-top:1px solid var(--line);">
+    </div>
+    
+    <form id="magicLinkForm">
+      <div class="field" style="text-align:left;">
+        <label data-ur="ای میل">Email</label>
+        <input type="email" id="authEmail" required placeholder="name@example.com" data-ur-placeholder="name@example.com">
+      </div>
+      <button type="submit" class="submit-btn" id="magicLinkBtn" data-ur="میجک لنک بھیجیں">Send Magic Link</button>
+      <div id="authMsg" style="margin-top:14px; font-size:14px; font-weight:600; display:none;"></div>
+    </form>
+  </div>
+</div>
+
+<div class="formcard" id="profile-section" style="display:none;">
   <div class="formbox">
-    <iframe id="pf" src="" title="Vostok profile form" loading="eager"></iframe>
+    <div class="formbox-inner">
+      <form id="profileForm">
+        <h3 style="font-size:22px; font-weight:900; margin-bottom:24px;" data-ur="آپ کا پروفائل">Your Profile</h3>
+        
+        <div class="field">
+          <label data-ur="گٹ ہب پروفائل یو آر ایل (اختیاری)">GitHub Profile URL (Optional)</label>
+          <input type="url" id="p_github" placeholder="https://github.com/username" data-ur-placeholder="https://github.com/username">
+        </div>
+        
+        <div class="field">
+          <label data-ur="پورٹ فولیو / لنکڈ ان (اختیاری)">Portfolio / LinkedIn URL (Optional)</label>
+          <input type="url" id="p_portfolio" placeholder="https://..." data-ur-placeholder="https://...">
+        </div>
+        
+        <div class="field">
+          <label data-ur="مہارتیں (کوما سے الگ کریں) (اختیاری)">Skills (comma separated) (Optional)</label>
+          <input type="text" id="p_skills" placeholder="e.g. React, Python, AWS" data-ur-placeholder="مثال: React, Python, AWS">
+        </div>
+
+        <div class="field">
+          <label data-ur="دستیابی (کب سے کام شروع کر سکتے ہیں؟) (اختیاری)">Available From (When can you start?) (Optional)</label>
+          <input type="date" id="p_available">
+        </div>
+
+        <div class="field">
+          <label data-ur="متوقع ماہانہ معاوضہ (USD) (اختیاری)">Expected Monthly Rate (USD) (Optional)</label>
+          <input type="text" id="p_rate" placeholder="e.g. $1500" data-ur-placeholder="مثال: $1500">
+        </div>
+
+        <hr style="border:none; border-top:1px solid var(--line); margin:44px 0;">
+        
+        <h3 style="font-size:20px; font-weight:900; margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--green);"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg>
+          <span data-ur="ادائیگی کی تفصیلات">Payout Details</span>
+        </h3>
+        <p style="font-size:13.5px; color:var(--muted); margin-bottom:28px; line-height:1.6;" data-ur="بینک کی معلومات صرف آپ کی رقم بھیجنے کے لیے محفوظ طریقے سے محفوظ کی جاتی ہیں۔ آپ اسے کام شروع کرنے کے بعد شامل کر سکتے ہیں، لیکن پہلی ادائیگی کے لیے یہ ضروری ہے۔">Bank information is stored securely only for sending your money. You can add this after starting work, but it is required for your first payment.</p>
+
+        <div class="field">
+          <label data-ur="ادائیگی کا طریقہ (اختیاری)">Payout Method (Optional)</label>
+          <select id="p_method">
+            <option value="" disabled selected data-ur="منتخب کریں...">Select...</option>
+            <option value="Wise">Wise</option>
+            <option value="Payoneer">Payoneer</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label data-ur="اکاؤنٹ ہولڈر کا نام (اختیاری)">Account Holder Name (Optional)</label>
+          <input type="text" id="p_holder" placeholder="Ali Ahmed" data-ur-placeholder="علی احمد">
+        </div>
+
+        <div class="field">
+          <label data-ur="IBAN / اکاؤنٹ نمبر (اختیاری)">IBAN / Account Number (Optional)</label>
+          <input type="text" id="p_iban" placeholder="PK..." data-ur-placeholder="PK...">
+        </div>
+
+        <div class="field">
+          <label data-ur="بینک کا نام (اختیاری)">Bank Name (Optional)</label>
+          <input type="text" id="p_bank" placeholder="e.g. Meezan Bank" data-ur-placeholder="مثال: Meezan Bank">
+        </div>
+
+        <button type="submit" class="submit-btn" id="saveProfileBtn" data-ur="محفوظ کریں">Save Profile</button>
+        <div id="profileMsg" style="margin-top:14px; font-size:14.5px; font-weight:600; text-align:center; display:none;"></div>
+      </form>
+    </div>
   </div>
 </div>
 
@@ -82,21 +183,165 @@
   <a href="terms.html" data-ur="استعمال کی شرائط">Terms of Use</a> · <a href="privacy.html" data-ur="رازداری کی پالیسی">Privacy Policy</a> · © 2026 Vostok Inc.
 </footer>
 
-<script>
-  var email = new URLSearchParams(location.search).get('email') || '';
-  var src = 'https://airtable.com/embed/appdxTkBo7LBmoEdw/shrFIhlKjk1PAMuWv';
-  if (email) src += '?prefill_Email=' + encodeURIComponent(email);
-  document.getElementById('pf').src = src;
+<script type="module">
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+  
+  // TO USER: Replace placeholders with your actual Supabase keys
+  const supabase = createClient('<PROJECT_URL>', '<ANON_KEY>');
+
+  const authSection = document.getElementById('auth-section');
+  const profileSection = document.getElementById('profile-section');
+  const isUr = () => document.documentElement.lang === 'ur';
+
+  // Check auth state
+  const { data: { session } } = await supabase.auth.getSession();
+  
+  if (session) {
+    authSection.style.display = 'none';
+    profileSection.style.display = 'block';
+    loadProfile(session.user);
+  }
+
+  supabase.auth.onAuthStateChange((event, session) => {
+    if (session) {
+      authSection.style.display = 'none';
+      profileSection.style.display = 'block';
+      loadProfile(session.user);
+    } else {
+      authSection.style.display = 'block';
+      profileSection.style.display = 'none';
+    }
+  });
+
+  // Login handlers
+  document.getElementById('googleLogin').addEventListener('click', async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: window.location.origin + window.location.pathname }
+    });
+  });
+
+  const magicForm = document.getElementById('magicLinkForm');
+  const authMsg = document.getElementById('authMsg');
+  magicForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('authEmail').value;
+    const btn = document.getElementById('magicLinkBtn');
+    btn.disabled = true;
+    authMsg.style.display = 'none';
+    
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: { emailRedirectTo: window.location.origin + window.location.pathname }
+    });
+    
+    btn.disabled = false;
+    authMsg.style.display = 'block';
+    if (error) {
+      authMsg.style.color = '#d93025';
+      authMsg.innerText = isUr() ? "لنک بھیجنے میں ایک مسئلہ تھا۔" : "Error sending link.";
+    } else {
+      authMsg.style.color = 'var(--green)';
+      authMsg.innerText = isUr() ? "ہم نے آپ کو لاگ ان کا لنک بھیج دیا ہے۔ اپنا ای میل چیک کریں!" : "We sent you a login link. Check your email!";
+    }
+  });
+
+  // Load and prefill profile
+  async function loadProfile(user) {
+    let { data: profile } = await supabase.from('profiles').select('*').eq('user_id', user.id).single();
+    let { data: payout } = await supabase.from('payout_details').select('*').eq('user_id', user.id).single();
+
+    if (!profile) {
+      const { data: appData } = await supabase.from('applicants')
+        .select('*')
+        .eq('email', user.email)
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .single();
+      
+      if (appData) {
+        document.getElementById('p_skills').value = appData.primary_skills ? appData.primary_skills.join(', ') : '';
+      }
+    } else {
+      document.getElementById('p_github').value = profile.github_url || '';
+      document.getElementById('p_portfolio').value = profile.portfolio_url || '';
+      document.getElementById('p_skills').value = profile.skills ? profile.skills.join(', ') : '';
+      document.getElementById('p_available').value = profile.available_from || '';
+      document.getElementById('p_rate').value = profile.rate_expectation || '';
+    }
+
+    if (payout) {
+      document.getElementById('p_method').value = payout.method || '';
+      document.getElementById('p_holder').value = payout.account_holder || '';
+      document.getElementById('p_iban').value = payout.iban || '';
+      document.getElementById('p_bank').value = payout.bank_name || '';
+    }
+  }
+
+  // Save profile
+  const profileForm = document.getElementById('profileForm');
+  const saveBtn = document.getElementById('saveProfileBtn');
+  const profileMsg = document.getElementById('profileMsg');
+
+  profileForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+
+    saveBtn.disabled = true;
+    profileMsg.style.display = 'none';
+    
+    const skillsArr = document.getElementById('p_skills').value.split(',').map(s => s.trim()).filter(s => s);
+
+    const { error: pErr } = await supabase.from('profiles').upsert({
+      user_id: user.id,
+      email: user.email,
+      github_url: document.getElementById('p_github').value || null,
+      portfolio_url: document.getElementById('p_portfolio').value || null,
+      skills: skillsArr,
+      available_from: document.getElementById('p_available').value || null,
+      rate_expectation: document.getElementById('p_rate').value || null,
+      locale: document.documentElement.lang
+    });
+
+    const { error: pyErr } = await supabase.from('payout_details').upsert({
+      user_id: user.id,
+      method: document.getElementById('p_method').value || null,
+      account_holder: document.getElementById('p_holder').value || null,
+      iban: document.getElementById('p_iban').value || null,
+      bank_name: document.getElementById('p_bank').value || null
+    });
+
+    saveBtn.disabled = false;
+    profileMsg.style.display = 'block';
+
+    if (pErr || pyErr) {
+      console.error(pErr, pyErr);
+      profileMsg.style.color = '#d93025';
+      profileMsg.innerText = isUr() ? "محفوظ کرنے میں ایک مسئلہ تھا۔" : "Error saving profile.";
+    } else {
+      profileMsg.style.color = 'var(--green)';
+      profileMsg.innerText = isUr() ? "پروفائل کامیابی سے محفوظ ہو گیا!" : "Profile saved successfully!";
+      setTimeout(() => profileMsg.style.display = 'none', 4000);
+    }
+  });
 </script>
 
 <script>
   (function(){
     var nodes = document.querySelectorAll('[data-ur]');
     nodes.forEach(function(el){ el.setAttribute('data-en', el.innerHTML); });
+    
+    var pNodes = document.querySelectorAll('[data-ur-placeholder]');
+    pNodes.forEach(function(el){ el.setAttribute('data-en-placeholder', el.getAttribute('placeholder')); });
+
     window.setLang = function(lang){
       var ur = (lang === 'ur');
       nodes.forEach(function(el){
         el.innerHTML = ur ? el.getAttribute('data-ur') : el.getAttribute('data-en');
+      });
+      pNodes.forEach(function(el){
+        el.setAttribute('placeholder', ur ? el.getAttribute('data-ur-placeholder') : el.getAttribute('data-en-placeholder'));
       });
       document.documentElement.lang = ur ? 'ur' : 'en';
       document.documentElement.dir  = ur ? 'rtl' : 'ltr';
