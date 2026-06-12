@@ -222,11 +222,18 @@
   const consentCb = document.getElementById('fconsent');
   const submitBtn = document.getElementById('submitBtn');
 
-  termsBox.addEventListener('scroll', () => {
-    if (termsBox.scrollHeight - termsBox.scrollTop <= termsBox.clientHeight + 4) {
+  function checkTermsScrolled() {
+    var notScrollable = (termsBox.scrollHeight - termsBox.clientHeight) <= 8;
+    var nearBottom = (termsBox.scrollHeight - termsBox.scrollTop - termsBox.clientHeight) <= 24;
+    if (notScrollable || nearBottom) {
       consentCb.disabled = false;
     }
-  });
+  }
+  termsBox.addEventListener('scroll', checkTermsScrolled);
+  window.addEventListener('resize', checkTermsScrolled);
+  window.addEventListener('load', checkTermsScrolled);
+  setTimeout(checkTermsScrolled, 800);
+  checkTermsScrolled();
 
   consentCb.addEventListener('change', () => {
     submitBtn.disabled = !consentCb.checked;

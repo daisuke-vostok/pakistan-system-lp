@@ -84,13 +84,16 @@
     <h3 style="font-size:24px; font-weight:900; margin-bottom:12px;" data-ur="لاگ ان کریں">Log In</h3>
     <p style="color:var(--muted); font-size:15px; margin-bottom:32px;" data-ur="اپنا پروفائل مکمل کرنے کے لیے لاگ ان کریں۔">Log in to complete your profile.</p>
     
+    <!-- Googleログインは一旦非表示（ローンチ時にCustom Domainと一緒に復活）。復活させるには下のwrapの style="display:none" を外す -->
+    <div id="googleAuthWrap" style="display:none;">
     <button id="googleLogin" class="submit-btn" style="background:#fff; color:#444; border:1.5px solid var(--line); box-shadow:0 4px 12px -4px rgba(0,0,0,.05); display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:28px;">
       <svg width="22" height="22" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.5 1.2 9 3.5l6.5-6.5C35.5 2.5 30 0 24 0 14.5 0 6.5 5.5 2.5 13.5l7.5 6C12 11.5 17.5 9.5 24 9.5z"/><path fill="#4285F4" d="M47.5 24.5c0-1.5-.1-3.5-.5-5H24v9.5h13.5c-.5 3-2 5.5-4.5 7l7.5 6C45 38 47.5 32 47.5 24.5z"/><path fill="#FBBC05" d="M10.5 28c-.5-1.5-.5-3-.5-4.5s0-3 .5-4.5l-7.5-6C1 16 0 20 0 24s1 8 3 11l7.5-6z"/><path fill="#34A853" d="M24 48c6.5 0 12-2 16.5-6l-7.5-6c-2.5 1.5-5.5 2.5-9 2.5-6.5 0-12-4.5-14-10.5l-7.5 6C6.5 42.5 14.5 48 24 48z"/></svg>
       <span data-ur="گوگل کے ساتھ لاگ ان کریں">Continue with Google</span>
     </button>
-    
+
     <div style="display:flex; align-items:center; gap:12px; color:var(--muted); font-size:13.5px; margin-bottom:28px;">
       <hr style="flex:1; border:none; border-top:1px solid var(--line);"><span data-ur="یا">or</span><hr style="flex:1; border:none; border-top:1px solid var(--line);">
+    </div>
     </div>
     
     <form id="magicLinkForm">
