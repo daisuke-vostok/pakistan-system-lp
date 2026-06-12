@@ -136,12 +136,41 @@
         </div>
 
         <hr style="border:none; border-top:1px solid var(--line); margin:44px 0;">
+
+        <h3 style="font-size:20px; font-weight:900; margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--green);"><path d="M3 21h18M5 21V8l7-5 7 5v13"></path><path d="M9 21v-6h6v6"></path></svg>
+          <span data-ur="ٹیکس رہائش اور پتہ">Tax Residence &amp; Address</span>
+        </h3>
+        <p style="font-size:13.5px; color:var(--muted); margin-bottom:28px; line-height:1.6;" data-ur="یہ معلومات ریکارڈ اور انوائس کے لیے استعمال ہوتی ہے، اور اس سے تصدیق ہوتی ہے کہ آپ جاپان سے باہر کے ٹیکس ریزیڈنٹ ہیں۔">Used for records and invoices, and to confirm you are a tax resident outside Japan.</p>
+
+        <div class="field">
+          <label data-ur="ملک (ٹیکس رہائش)">Country (Tax Residence)</label>
+          <input type="text" id="p_tax_country" placeholder="Pakistan" data-ur-placeholder="پاکستان">
+        </div>
+        <div class="field">
+          <label data-ur="پتہ">Address</label>
+          <input type="text" id="p_tax_address" placeholder="Street, area" data-ur-placeholder="گلی، علاقہ">
+        </div>
+        <div class="field">
+          <label data-ur="شہر">City</label>
+          <input type="text" id="p_tax_city" placeholder="e.g. Lahore" data-ur-placeholder="مثال: لاہور">
+        </div>
+        <div class="field">
+          <label data-ur="پوسٹل کوڈ">Postal Code</label>
+          <input type="text" id="p_tax_postal" placeholder="e.g. 54000" data-ur-placeholder="مثال: 54000">
+        </div>
+        <div class="field" style="display:flex; gap:10px; align-items:flex-start;">
+          <input type="checkbox" id="p_residency" style="width:auto; margin-top:4px; flex-shrink:0;">
+          <label for="p_residency" style="font-weight:500; font-size:13.5px; line-height:1.6;" data-ur="میں تصدیق کرتا ہوں کہ میں پاکستان (یا اوپر دیا گیا ملک) کا ٹیکس ریزیڈنٹ ہوں، تمام خدمات جاپان سے باہر انجام دیتا ہوں، اور اپنے ملک میں اپنے ٹیکس کا خود ذمہ دار ہوں۔">I confirm that I am a tax resident of Pakistan (or the country above), that I perform all services from outside Japan, and that I am responsible for my own taxes in my country.</label>
+        </div>
+
+        <hr style="border:none; border-top:1px solid var(--line); margin:44px 0;">
         
         <h3 style="font-size:20px; font-weight:900; margin-bottom:10px; display:flex; align-items:center; gap:8px;">
           <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--green);"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg>
           <span data-ur="ادائیگی کی تفصیلات">Payout Details</span>
         </h3>
-        <p style="font-size:13.5px; color:var(--muted); margin-bottom:28px; line-height:1.6;" data-ur="بینک کی معلومات صرف آپ کی رقم بھیجنے کے لیے محفوظ طریقے سے محفوظ کی جاتی ہیں۔ آپ اسے کام شروع کرنے کے بعد شامل کر سکتے ہیں، لیکن پہلی ادائیگی کے لیے یہ ضروری ہے۔">Bank information is stored securely only for sending your money. You can add this after starting work, but it is required for your first payment.</p>
+        <p style="font-size:13.5px; color:var(--muted); margin-bottom:28px; line-height:1.6;" data-ur="بینک کی معلومات صرف آپ کی رقم بھیجنے کے لیے محفوظ طریقے سے محفوظ کی جاتی ہیں۔ آپ اسے کام شروع کرنے کے بعد شامل کر سکتے ہیں، لیکن پہلی ادائیگی کے لیے یہ ضروری ہے۔ اکاؤنٹ ہولڈر کا نام آپ کے شناختی دستاویز (KYC) کے نام سے مطابقت رکھنا ضروری ہے۔">Bank information is stored securely only for sending your money. You can add this after starting work, but it is required for your first payment. Your account holder name must match the name on your identity document (KYC).</p>
 
         <div class="field">
           <label data-ur="ادائیگی کا طریقہ (اختیاری)">Payout Method (Optional)</label>
@@ -167,7 +196,15 @@
           <input type="text" id="p_bank" placeholder="e.g. Meezan Bank" data-ur-placeholder="مثال: Meezan Bank">
         </div>
 
-        <button type="submit" class="submit-btn" id="saveProfileBtn" data-ur="محفوظ کریں">Save Profile</button>
+        <hr style="border:none; border-top:1px solid var(--line); margin:44px 0;">
+
+        <h3 style="font-size:20px; font-weight:900; margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--green);"><circle cx="12" cy="12" r="9"></circle><path d="M8 12l2.5 2.5L16 9"></path></svg>
+          <span data-ur="شناخت کی تصدیق (KYC)">Identity Verification (KYC)</span>
+        </h3>
+        <div class="paybox" style="background:var(--green-soft); border-color:var(--green); color:var(--green-deep);" data-ur="شناخت کی تصدیق (KYC) اُس وقت ضروری ہوگی جب آپ کوئی پروجیکٹ قبول کریں گے — اُس وقت ہم آپ کو گائیڈ کریں گے۔ ابھی کچھ کرنے کی ضرورت نہیں۔">Identity verification (KYC) becomes required when you accept a project — we'll guide you through it at that point. Nothing to do now.</div>
+
+        <button type="submit" class="submit-btn" id="saveProfileBtn" style="margin-top:28px;" data-ur="محفوظ کریں">Save Profile</button>
         <div id="profileMsg" style="margin-top:14px; font-size:14.5px; font-weight:600; text-align:center; display:none;"></div>
       </form>
     </div>
@@ -261,6 +298,9 @@
       
       if (appData) {
         document.getElementById('p_skills').value = appData.primary_skills ? appData.primary_skills.join(', ') : '';
+        document.getElementById('p_tax_country').value = appData.country || 'Pakistan';
+      } else {
+        document.getElementById('p_tax_country').value = 'Pakistan';
       }
     } else {
       document.getElementById('p_github').value = profile.github_url || '';
@@ -268,6 +308,11 @@
       document.getElementById('p_skills').value = profile.skills ? profile.skills.join(', ') : '';
       document.getElementById('p_available').value = profile.available_from || '';
       document.getElementById('p_rate').value = profile.rate_expectation || '';
+      document.getElementById('p_tax_country').value = profile.tax_country || 'Pakistan';
+      document.getElementById('p_tax_address').value = profile.tax_address || '';
+      document.getElementById('p_tax_city').value = profile.tax_city || '';
+      document.getElementById('p_tax_postal').value = profile.tax_postal || '';
+      document.getElementById('p_residency').checked = !!profile.residency_declared;
     }
 
     if (payout) {
@@ -301,6 +346,11 @@
       skills: skillsArr,
       available_from: document.getElementById('p_available').value || null,
       rate_expectation: document.getElementById('p_rate').value || null,
+      tax_country: document.getElementById('p_tax_country').value || null,
+      tax_address: document.getElementById('p_tax_address').value || null,
+      tax_city: document.getElementById('p_tax_city').value || null,
+      tax_postal: document.getElementById('p_tax_postal').value || null,
+      residency_declared: document.getElementById('p_residency').checked,
       locale: document.documentElement.lang
     });
 
