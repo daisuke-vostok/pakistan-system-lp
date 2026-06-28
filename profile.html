@@ -129,11 +129,6 @@
         </div>
 
         <div class="field">
-          <label data-ur="دستیابی (کب سے کام شروع کر سکتے ہیں؟) (اختیاری)">Available From (When can you start?) (Optional)</label>
-          <input type="date" id="p_available">
-        </div>
-
-        <div class="field">
           <label data-ur="متوقع ماہانہ معاوضہ (USD) (اختیاری)">Expected Monthly Rate (USD) (Optional)</label>
           <input type="text" id="p_rate" placeholder="e.g. $1500" data-ur-placeholder="مثال: $1500">
         </div>
@@ -142,25 +137,13 @@
 
         <h3 style="font-size:20px; font-weight:900; margin-bottom:10px; display:flex; align-items:center; gap:8px;">
           <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--green);"><path d="M3 21h18M5 21V8l7-5 7 5v13"></path><path d="M9 21v-6h6v6"></path></svg>
-          <span data-ur="ٹیکس رہائش اور پتہ">Tax Residence &amp; Address</span>
+          <span data-ur="ٹیکس رہائش">Tax Residence</span>
         </h3>
         <p style="font-size:13.5px; color:var(--muted); margin-bottom:28px; line-height:1.6;" data-ur="یہ معلومات ریکارڈ اور انوائس کے لیے استعمال ہوتی ہے، اور اس سے تصدیق ہوتی ہے کہ آپ جاپان سے باہر کے ٹیکس ریزیڈنٹ ہیں۔">Used for records and invoices, and to confirm you are a tax resident outside Japan.</p>
 
         <div class="field">
           <label data-ur="ملک (ٹیکس رہائش)">Country (Tax Residence)</label>
           <input type="text" id="p_tax_country" placeholder="Pakistan" data-ur-placeholder="پاکستان">
-        </div>
-        <div class="field">
-          <label data-ur="پتہ">Address</label>
-          <input type="text" id="p_tax_address" placeholder="Street, area" data-ur-placeholder="گلی، علاقہ">
-        </div>
-        <div class="field">
-          <label data-ur="شہر">City</label>
-          <input type="text" id="p_tax_city" placeholder="e.g. Lahore" data-ur-placeholder="مثال: لاہور">
-        </div>
-        <div class="field">
-          <label data-ur="پوسٹل کوڈ">Postal Code</label>
-          <input type="text" id="p_tax_postal" placeholder="e.g. 54000" data-ur-placeholder="مثال: 54000">
         </div>
         <div class="field" style="display:flex; gap:10px; align-items:flex-start;">
           <input type="checkbox" id="p_residency" style="width:auto; margin-top:4px; flex-shrink:0;">
@@ -204,12 +187,38 @@
         <h3 style="font-size:20px; font-weight:900; margin-bottom:10px; display:flex; align-items:center; gap:8px;">
           <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--green);"><circle cx="12" cy="12" r="9"></circle><path d="M8 12l2.5 2.5L16 9"></path></svg>
           <span data-ur="شناخت کی تصدیق (KYC)">Identity Verification (KYC)</span>
+          <span id="kycBadge" style="font-size:12.5px; font-weight:700; padding:4px 12px; border-radius:999px; background:#eee; color:#666;">—</span>
         </h3>
-        <div class="paybox" style="background:var(--green-soft); border-color:var(--green); color:var(--green-deep);" data-ur="شناخت کی تصدیق (KYC) اُس وقت ضروری ہوگی جب آپ کوئی پروجیکٹ قبول کریں گے — اُس وقت ہم آپ کو گائیڈ کریں گے۔ ابھی کچھ کرنے کی ضرورت نہیں۔">Identity verification (KYC) becomes required when you accept a project — we'll guide you through it at that point. Nothing to do now.</div>
+        <!-- 本人確認は専門業者 Didit が実施（書類真贋＋liveness＋顔照合）。
+             機微データ（身分証画像・番号・セルフィー）は当社サーバに保存せず、結果のみ受領。
+             文言は _LP-handoff/Didit_表示コピー.md（エンジニア向け英語コピー）をそのまま使用。 -->
+        <p style="font-size:14px; font-weight:700; margin-bottom:10px; line-height:1.6;">🔒 Identity verification by Didit</p>
+        <p style="font-size:13.5px; color:var(--muted); margin-bottom:18px; line-height:1.6;">Your identity is verified by Didit, a specialized provider (ISO 27001 certified, SOC 2, GDPR-compliant). Your ID document and selfie are processed securely on Didit's platform and are not stored on our servers — we only receive the verification result. This keeps your sensitive data protected.</p>
+        <p style="font-size:13.5px; color:var(--muted); margin-bottom:18px; line-height:1.6;">Identity verification is required before you start work. You'll be taken to Didit's secure page to complete it.</p>
+
+        <button type="button" id="kycVerifyBtn" class="submit-btn" style="margin-top:2px;">Verify my identity with Didit</button>
+        <div id="kycMsg" style="font-size:13.5px; font-weight:600; display:none; margin-top:10px;"></div>
 
         <button type="submit" class="submit-btn" id="saveProfileBtn" style="margin-top:28px;" data-ur="محفوظ کریں">Save Profile</button>
         <div id="profileMsg" style="margin-top:14px; font-size:14.5px; font-weight:600; text-align:center; display:none;"></div>
       </form>
+
+      <div id="successPanel" style="display:none; text-align:center; padding:8px 4px;">
+        <div style="font-size:46px; line-height:1; margin-bottom:14px;">&#10003;</div>
+        <h3 style="font-size:22px; font-weight:900; margin-bottom:10px;" data-ur="آپ کا پروفائل موصول ہو گیا!">Your profile is in!</h3>
+        <p style="font-size:15px; color:#444; margin-bottom:22px;" data-ur="آپ کا شکریہ — آپ کی تفصیلات محفوظ ہو گئی ہیں۔ آپ کو دوبارہ کچھ کرنے کی ضرورت نہیں۔">Thank you &mdash; your details are saved. You don&rsquo;t need to do anything else right now.</p>
+
+        <div style="text-align:left; max-width:440px; margin:0 auto 22px; background:#f4f8f4; border-radius:14px; padding:18px 20px;">
+          <div style="font-weight:800; margin-bottom:12px;" data-ur="آگے کیا ہوگا">What happens next</div>
+          <div style="display:flex; gap:12px; margin-bottom:12px;"><div style="font-weight:900; color:var(--green);">1.</div><div data-ur="ہماری ٹیم آپ کا پروفائل دیکھے گی (عام طور پر چند کاروباری دنوں میں)۔">Our team reviews your profile (usually within a few business days).</div></div>
+          <div style="display:flex; gap:12px; margin-bottom:12px;"><div style="font-weight:900; color:var(--green);">2.</div><div data-ur="اگر کوئی موزوں موقع ہوا تو ہم آپ سے ای میل یا واٹس ایپ پر رابطہ کریں گے۔">If there&rsquo;s a good match, we&rsquo;ll reach out by email or WhatsApp.</div></div>
+          <div style="display:flex; gap:12px;"><div style="font-weight:900; color:var(--green);">3.</div><div data-ur="آپ کسی بھی وقت واپس آ کر اپنا پروفائل اپ ڈیٹ کر سکتے ہیں — مکمل پروفائل تیزی سے میچ ہوتا ہے۔">You can update your profile anytime &mdash; a more complete profile gets matched faster.</div></div>
+        </div>
+
+        <p style="font-size:13px; color:#8a8a8a; margin-bottom:20px;" data-ur="یاد رکھیں: Japan System کبھی آپ سے پیسے یا ادائیگی کی تفصیلات نہیں مانگے گا۔ ٹرائل ٹاسک معاوضہ شدہ ہوتے ہیں، اور صرف معاہدہ سائن ہونے کے بعد۔">Reminder: Japan System will never ask you for money or payment details. Trial tasks are paid, and only after a signed contract.</p>
+
+        <button type="button" id="editProfileBtn" class="submit-btn" style="background:#fff; color:var(--green); border:2px solid var(--green);" data-ur="پروفائل میں ترمیم کریں">Edit my profile</button>
+      </div>
     </div>
   </div>
 </div>
@@ -232,6 +241,64 @@
   const authSection = document.getElementById('auth-section');
   const profileSection = document.getElementById('profile-section');
   const isUr = () => document.documentElement.lang === 'ur';
+
+  // KYC状態バッジ（未/申請中/完了/却下）
+  function renderKycBadge(status){
+    const badge = document.getElementById('kycBadge');
+    if (!badge) return;
+    const ur = isUr();
+    const map = {
+      '未':    { en:'Not started', ur:'شروع نہیں ہوا', bg:'#eee',    fg:'#666' },
+      '申請中':{ en:'Pending review', ur:'زیرِ جائزہ', bg:'#fff3df', fg:'#b06a00' },
+      '完了':  { en:'Verified', ur:'تصدیق شدہ',     bg:'#e7f5ec', fg:'#1c7a48' },
+      '却下':  { en:'Rejected', ur:'مسترد',          bg:'#fdeceb', fg:'#c5372c' }
+    };
+    const m = map[status] || map['未'];
+    badge.textContent = ur ? m.ur : m.en;
+    badge.style.background = m.bg; badge.style.color = m.fg;
+    badge.dataset.status = status;
+  }
+
+  async function loadKycStatus(email){
+    try {
+      const { data } = await supabase.rpc('get_kyc_status', { p_email: email });
+      renderKycBadge(data || '未');
+    } catch(_) { renderKycBadge('未'); }
+  }
+
+  // 本人確認は Didit に委譲。Edge Function(didit-create-session)で検証セッションを作り、
+  // 返ってきた verification_url（Diditのホスト画面）へ誘導する。
+  // 生PII（身分証番号・画像）はクライアントから送らない・保持しない。
+  async function startDiditVerification(email){
+    const kycMsg = document.getElementById('kycMsg');
+    const btn = document.getElementById('kycVerifyBtn');
+    kycMsg.style.display = 'block';
+    if (!email) {
+      kycMsg.style.color = '#c5372c';
+      kycMsg.textContent = isUr() ? 'براہ کرم پہلے لاگ اِن کریں۔' : 'Please log in first.';
+      return;
+    }
+    if (btn) btn.disabled = true;
+    kycMsg.style.color = 'var(--muted)';
+    kycMsg.textContent = isUr() ? 'تصدیق شروع کی جا رہی ہے…' : 'Starting verification…';
+    try {
+      const { data, error } = await supabase.functions.invoke('didit-create-session', { body: { email } });
+      if (error || !data || !data.url) throw new Error('SESSION_FAILED');
+      renderKycBadge('申請中'); // webhookで最終確定するまでは「審査中」
+      window.location.href = data.url; // Diditの安全な検証画面へ
+    } catch (e) {
+      if (btn) btn.disabled = false;
+      kycMsg.style.color = '#c5372c';
+      kycMsg.textContent = isUr() ? 'تصدیق شروع نہیں ہو سکی۔ دوبارہ کوشش کریں۔' : 'Could not start verification. Please try again.';
+      console.warn('didit start failed:', e && e.message); // PIIは出さない
+    }
+  }
+
+  // 「Verify my identity」ボタン → 現在ログイン中ユーザーの email で検証開始
+  document.getElementById('kycVerifyBtn')?.addEventListener('click', async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    startDiditVerification(user && user.email);
+  });
 
   // Check auth state
   const { data: { session } } = await supabase.auth.getSession();
@@ -300,8 +367,14 @@
         .single();
       
       if (appData) {
+        // 初回ログイン: 登録(applicants)で入力済みの内容をマイページに引き継ぐ
         document.getElementById('p_skills').value = appData.primary_skills ? appData.primary_skills.join(', ') : '';
         document.getElementById('p_tax_country').value = appData.country || 'Pakistan';
+        document.getElementById('p_github').value = appData.github_url || '';
+        document.getElementById('p_portfolio').value = appData.portfolio_url || '';
+        if (appData.rate_min != null && appData.rate_max != null) {
+          document.getElementById('p_rate').value = '$' + appData.rate_min + '–$' + appData.rate_max;
+        }
       } else {
         document.getElementById('p_tax_country').value = 'Pakistan';
       }
@@ -309,12 +382,8 @@
       document.getElementById('p_github').value = profile.github_url || '';
       document.getElementById('p_portfolio').value = profile.portfolio_url || '';
       document.getElementById('p_skills').value = profile.skills ? profile.skills.join(', ') : '';
-      document.getElementById('p_available').value = profile.available_from || '';
       document.getElementById('p_rate').value = profile.rate_expectation || '';
       document.getElementById('p_tax_country').value = profile.tax_country || 'Pakistan';
-      document.getElementById('p_tax_address').value = profile.tax_address || '';
-      document.getElementById('p_tax_city').value = profile.tax_city || '';
-      document.getElementById('p_tax_postal').value = profile.tax_postal || '';
       document.getElementById('p_residency').checked = !!profile.residency_declared;
     }
 
@@ -324,6 +393,8 @@
       document.getElementById('p_iban').value = payout.iban || '';
       document.getElementById('p_bank').value = payout.bank_name || '';
     }
+
+    await loadKycStatus(user.email);
   }
 
   // Save profile
@@ -334,7 +405,15 @@
   profileForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return;
+    if (!user) {
+      profileMsg.style.display = 'block';
+      profileMsg.style.color = '#d93025';
+      profileMsg.innerText = isUr()
+        ? "آپ کا سیشن ختم ہو گیا ہے۔ براہ کرم دوبارہ لاگ اِن کریں اور دوبارہ محفوظ کریں۔"
+        : "Your session expired. Please log in again, then save once more.";
+      profileMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
 
     saveBtn.disabled = true;
     profileMsg.style.display = 'none';
@@ -347,12 +426,8 @@
       github_url: document.getElementById('p_github').value || null,
       portfolio_url: document.getElementById('p_portfolio').value || null,
       skills: skillsArr,
-      available_from: document.getElementById('p_available').value || null,
       rate_expectation: document.getElementById('p_rate').value || null,
       tax_country: document.getElementById('p_tax_country').value || null,
-      tax_address: document.getElementById('p_tax_address').value || null,
-      tax_city: document.getElementById('p_tax_city').value || null,
-      tax_postal: document.getElementById('p_tax_postal').value || null,
       residency_declared: document.getElementById('p_residency').checked,
       locale: document.documentElement.lang
     });
@@ -365,6 +440,8 @@
       bank_name: document.getElementById('p_bank').value || null
     });
 
+    // 本人確認(KYC)は「Verify my identity with Didit」ボタンから別途実施（このフォーム保存では行わない）。
+
     saveBtn.disabled = false;
     profileMsg.style.display = 'block';
 
@@ -373,11 +450,23 @@
       profileMsg.style.color = '#d93025';
       profileMsg.innerText = isUr() ? "محفوظ کرنے میں ایک مسئلہ تھا۔" : "Error saving profile.";
     } else {
-      profileMsg.style.color = 'var(--green)';
-      profileMsg.innerText = isUr() ? "پروفائل کامیابی سے محفوظ ہو گیا!" : "Profile saved successfully!";
-      setTimeout(() => profileMsg.style.display = 'none', 4000);
+      // Show persistent confirmation + next steps, hide the form, scroll to it
+      profileMsg.style.display = 'none';
+      profileForm.style.display = 'none';
+      document.getElementById('successPanel').style.display = 'block';
+      document.getElementById('profile-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
+
+  // Let users get back to editing from the success panel
+  const editBtn = document.getElementById('editProfileBtn');
+  if (editBtn) {
+    editBtn.addEventListener('click', () => {
+      document.getElementById('successPanel').style.display = 'none';
+      profileForm.style.display = 'block';
+      profileForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
 </script>
 
 <script>

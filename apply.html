@@ -28,11 +28,13 @@
   .formbox-inner { padding: 36px 28px; }
   .field { margin-bottom: 24px; text-align: left; }
   .field label { display: block; font-weight: 700; font-size: 14.5px; margin-bottom: 8px; color: #2a322a; }
-  .field input[type="text"], .field input[type="email"], .field input[type="tel"], .field select { width: 100%; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 10px; font-size: 15px; font-family: inherit; transition: border-color 0.2s; background: #fafcfa; color: var(--ink); }
+  .field input[type="text"], .field input[type="email"], .field input[type="tel"], .field input[type="url"], .field input[type="number"], .field select { width: 100%; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 10px; font-size: 15px; font-family: inherit; transition: border-color 0.2s; background: #fafcfa; color: var(--ink); }
   .field input:focus, .field select:focus { outline: none; border-color: var(--green); background: #fff; }
   .field .desc { font-size: 12.5px; color: var(--muted); margin-top: 6px; display: block; }
-  
+
   .chip-group { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip-cat { flex-basis: 100%; font-size: 12px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--green-deep); margin: 12px 0 2px; }
+  .chip-cat:first-child { margin-top: 0; }
   .chip { padding: 8px 18px; border: 1.5px solid var(--line); border-radius: 999px; font-size: 13.5px; font-weight: 600; color: var(--muted); cursor: pointer; transition: all 0.2s; user-select: none; background: #fff; }
   .chip.selected { background: var(--green-soft); color: var(--green); border-color: var(--green); }
   
@@ -122,19 +124,68 @@
           <label data-ur="واٹس ایپ (اختیاری لیکن تجویز کردہ)">WhatsApp (Optional but recommended)</label>
           <input type="tel" id="fwa" placeholder="+92 300 1234567" data-ur-placeholder="+92 300 1234567">
         </div>
-        
+
+        <div class="field">
+          <label data-ur="ملک *">Country *</label>
+          <select id="fcountry" required>
+            <option value="" disabled selected data-ur="منتخب کریں...">Select...</option>
+            <option value="Pakistan" data-ur="پاکستان">Pakistan</option>
+            <option value="Vietnam">Vietnam</option>
+            <option value="India">India</option>
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="Sri Lanka">Sri Lanka</option>
+            <option value="Philippines">Philippines</option>
+            <option value="Egypt">Egypt</option>
+            <option value="Other" data-ur="دیگر">Other</option>
+          </select>
+          <span class="desc" data-ur="ہم فی الحال پاکستان کے انجینئرز پر توجہ دے رہے ہیں۔">We currently focus on engineers based in Pakistan.</span>
+        </div>
+
         <div class="field">
           <label data-ur="بنیادی مہارتیں (جو آپ پر لاگو ہوں انہیں منتخب کریں) *">Primary Skills (Select all that apply) *</label>
           <div class="chip-group" id="skillsContainer">
+            <div class="chip-cat">Frontend</div>
             <div class="chip" data-val="React/Next.js">React/Next.js</div>
             <div class="chip" data-val="Vue/Nuxt">Vue/Nuxt</div>
+            <div class="chip" data-val="Angular">Angular</div>
+            <div class="chip" data-val="TypeScript">TypeScript</div>
+            <div class="chip-cat">Backend</div>
             <div class="chip" data-val="Node.js">Node.js</div>
             <div class="chip" data-val="Python">Python</div>
             <div class="chip" data-val="Ruby on Rails">Ruby on Rails</div>
             <div class="chip" data-val="Go">Go</div>
             <div class="chip" data-val="PHP/Laravel">PHP/Laravel</div>
-            <div class="chip" data-val="AWS/GCP">AWS/GCP</div>
-            <div class="chip" data-val="Mobile (Flutter/React Native)">Mobile</div>
+            <div class="chip" data-val="Java/Kotlin">Java/Kotlin</div>
+            <div class="chip" data-val="C#/.NET">C#/.NET</div>
+            <div class="chip" data-val="Rust">Rust</div>
+            <div class="chip-cat">Mobile</div>
+            <div class="chip" data-val="Flutter">Flutter</div>
+            <div class="chip" data-val="React Native">React Native</div>
+            <div class="chip" data-val="iOS/Swift">iOS/Swift</div>
+            <div class="chip" data-val="Android/Kotlin">Android/Kotlin</div>
+            <div class="chip-cat">Cloud &amp; DevOps</div>
+            <div class="chip" data-val="AWS">AWS</div>
+            <div class="chip" data-val="GCP">GCP</div>
+            <div class="chip" data-val="Azure">Azure</div>
+            <div class="chip" data-val="Docker/Kubernetes">Docker/Kubernetes</div>
+            <div class="chip" data-val="CI/CD">CI/CD</div>
+            <div class="chip" data-val="Terraform">Terraform</div>
+            <div class="chip-cat">Data &amp; AI</div>
+            <div class="chip" data-val="Machine Learning">Machine Learning</div>
+            <div class="chip" data-val="LLM / Generative AI">LLM / Generative AI</div>
+            <div class="chip" data-val="LLM Fine-tuning">LLM Fine-tuning</div>
+            <div class="chip" data-val="RAG / Vector DB">RAG / Vector DB</div>
+            <div class="chip" data-val="NLP">NLP</div>
+            <div class="chip" data-val="Computer Vision">Computer Vision</div>
+            <div class="chip" data-val="Data Engineering">Data Engineering</div>
+            <div class="chip" data-val="MLOps">MLOps</div>
+            <div class="chip-cat">Other</div>
+            <div class="chip" data-val="PostgreSQL/MySQL">PostgreSQL/MySQL</div>
+            <div class="chip" data-val="MongoDB">MongoDB</div>
+            <div class="chip" data-val="GraphQL">GraphQL</div>
+            <div class="chip" data-val="QA/Test Automation">QA/Test Automation</div>
+            <div class="chip" data-val="UI/UX Design">UI/UX Design</div>
+            <div class="chip" data-val="Blockchain/Web3">Blockchain/Web3</div>
             <div class="chip" data-val="Other" data-ur="دیگر">Other</div>
           </div>
           <input type="hidden" id="fskills" required>
@@ -150,6 +201,49 @@
             <option value="5+" data-ur="5+ سال">5+ years</option>
           </select>
         </div>
+
+        <div class="field">
+          <label data-ur="گٹ ہب پروفائل یو آر ایل *">GitHub Profile URL *</label>
+          <input type="url" id="fgithub" required placeholder="https://github.com/username" data-ur-placeholder="https://github.com/username">
+          <span class="desc" data-ur="تقریباً تمام انجینئرز کے پاس ہوتا ہے — یہ ہمیں آپ کے کام کا جائزہ لینے میں مدد دیتا ہے۔">Almost every engineer has one — it helps us review your work.</span>
+        </div>
+
+        <div class="field">
+          <label data-ur="اپ ورک پروفائل یو آر ایل (اختیاری)">Upwork Profile URL (Optional)</label>
+          <input type="url" id="fupwork" placeholder="https://www.upwork.com/freelancers/~..." data-ur-placeholder="https://www.upwork.com/freelancers/~...">
+        </div>
+
+        <div class="field">
+          <label data-ur="فائیور پروفائل یو آر ایل (اختیاری)">Fiverr Profile URL (Optional)</label>
+          <input type="url" id="ffiverr" placeholder="https://www.fiverr.com/username" data-ur-placeholder="https://www.fiverr.com/username">
+        </div>
+
+        <div class="field">
+          <label data-ur="پورٹ فولیو / لنکڈ ان یو آر ایل (اختیاری)">Portfolio / LinkedIn URL (Optional)</label>
+          <input type="url" id="fportfolio" placeholder="https://..." data-ur-placeholder="https://...">
+        </div>
+
+        <div class="field">
+          <label data-ur="متوقع ماہانہ معاوضہ (USD) *">Expected Monthly Rate (USD) *</label>
+          <div style="display:flex; gap:12px; align-items:center;">
+            <input type="number" id="frate_min" min="0" step="100" required placeholder="From e.g. 1500" data-ur-placeholder="From e.g. 1500" style="flex:1;">
+            <span style="color:var(--muted); font-weight:700;">–</span>
+            <input type="number" id="frate_max" min="0" step="100" required placeholder="To e.g. 2500" data-ur-placeholder="To e.g. 2500" style="flex:1;">
+          </div>
+          <span class="desc" data-ur="ایک رینج دیں (کم سے کم اور زیادہ سے زیادہ)۔ یہ صرف ایک ابتدائی اندازہ ہے۔">Give a range (lower and upper). This is only an initial estimate.</span>
+        </div>
+
+        <!-- ===== KYC（本人確認・Didit）案内 =====
+             本人確認は登録の必須ステップ。専門業者 Didit が実施し、身分証画像/番号/セルフィー等の
+             機微データは当社サーバに保存せず Didit 側で処理し、結果のみ受領する。
+             実際の検証は「送信」後の必須ステップ(#kyc-step)で行う。
+             文言は _LP-handoff/Didit_表示コピー.md（エンジニア向け英語コピー）を使用。 -->
+        <hr style="border:none; border-top:1px solid var(--line); margin:8px 0 28px;">
+        <div class="field" style="margin-bottom:8px;">
+          <label style="font-size:16px;" data-ur="🔒 شناخت کی تصدیق (KYC) — لازمی">🔒 Identity Verification (KYC) — required</label>
+          <span class="desc" data-ur="جاپانی کمپنیوں سے آپ کو محفوظ طریقے سے متعارف کروانے کے لیے، رجسٹریشن مکمل کرنے کے بعد ہم آپ سے ایک مختصر شناختی تصدیق مکمل کرنے کے لیے کہیں گے — براہ کرم تعاون کریں۔ یہ تصدیق ایک معروف بیرونی فراہم کنندہ Didit (ISO 27001, SOC 2, GDPR) کرتا ہے۔ آپ کا شناختی دستاویز اور سیلفی Didit کے پلیٹ فارم پر محفوظ طریقے سے پروسیس ہوتے ہیں اور ہمارے سرورز پر محفوظ نہیں کیے جاتے — ہمیں صرف تصدیق کا نتیجہ ملتا ہے۔">To introduce you safely to Japanese companies, we'll ask you to complete a short identity check right after you submit — please cooperate. This is done by Didit, a well-known external provider (ISO 27001, SOC 2, GDPR-compliant). Your ID document and selfie are processed securely on Didit's platform and are <b>not stored on our servers</b> — we only receive the verification result.</span>
+        </div>
+        <!-- ===== /KYC ===== -->
 
         <div class="field">
           <label data-ur="شرائط و ضوابط *">Terms and Conditions *</label>
@@ -168,8 +262,22 @@
 
         <button type="submit" class="submit-btn" id="submitBtn" disabled data-ur="درخواست جمع کروائیں">Submit Application</button>
         <div class="error-msg" id="errorMsg" data-ur="جمع کروانے میں ایک مسئلہ تھا۔ براہ کرم دوبارہ کوشش کریں۔">There was a problem submitting. Please try again.</div>
+        <p style="text-align:center; font-size:12.5px; color:var(--muted); margin-top:18px;" data-ur='کوئی سوال ہے؟ ہم سے رابطہ کریں <a href="mailto:daisuke.okamoto@vostok.co.jp" style="color:var(--green);font-weight:700;">daisuke.okamoto@vostok.co.jp</a> پر۔'>Any questions? Contact us at <a href="mailto:daisuke.okamoto@vostok.co.jp" style="color:var(--green);font-weight:700;">daisuke.okamoto@vostok.co.jp</a>.</p>
       </form>
     </div>
+  </div>
+
+  <!-- ===== Step 2: 本人確認（登録の必須ステップ）。送信成功後に表示し、Diditの検証画面へ誘導する。 ===== -->
+  <div class="formbox thanks-msg" id="kyc-step-container">
+    <div class="icon" style="background:#fff3df; color:#b06a00;">
+      <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg>
+    </div>
+    <h2 data-ur="ایک آخری مرحلہ: شناخت کی تصدیق">One last step: verify your identity</h2>
+    <p data-ur="آپ کی درخواست محفوظ ہو گئی ہے۔ جاپانی کمپنیوں سے محفوظ تعارف کے لیے، براہ کرم ابھی ایک مختصر شناختی تصدیق مکمل کریں۔ یہ معروف بیرونی فراہم کنندہ Didit کرتا ہے — آپ کا شناختی دستاویز اور سیلفی محفوظ طریقے سے Didit پر پروسیس ہوتے ہیں اور ہمارے سرورز پر محفوظ نہیں کیے جاتے۔">Your application is saved. To be introduced safely to Japanese companies, please complete a short identity check now. It's handled by Didit, a trusted external provider — your ID and selfie are processed securely on Didit and are not stored on our servers.</p>
+    <br>
+    <a href="#" class="btn" id="kycStartBtn" data-ur="ابھی اپنی شناخت کی تصدیق کریں →">Verify my identity now →</a>
+    <div id="kycMsg" style="font-size:13.5px; font-weight:600; display:none; margin-top:16px;"></div>
+    <p style="margin-top:22px;"><a href="profile.html" style="color:var(--muted); font-size:13px; text-decoration:underline;" data-ur="میں بعد میں اپنے مائی پیج سے تصدیق کروں گا">I'll verify later from My Page</a></p>
   </div>
 
   <div class="formbox thanks-msg" id="thanks-container">
@@ -198,6 +306,39 @@
   var ls = new URLSearchParams(location.search).get('ls') || 'LP-A';
   var allowed = ['LP-A','LP-B','Upwork','Referral','University','Other'];
   if (allowed.indexOf(ls) === -1) ls = 'Other';
+
+  // 本人確認は Didit に委譲。送信成功後に表示する「Step 2」で、Edge Function(didit-create-session)が
+  // 検証セッションを作り、返ってきた verification_url（Diditのホスト画面）へ遷移する。
+  // 生PII（番号・画像）はクライアントから送らない。emailは送信時に保存したものを使う。
+  let submittedEmail = '';
+  async function startDiditVerification(){
+    const isUr = document.documentElement.lang === 'ur';
+    const kycMsg = document.getElementById('kycMsg');
+    const btn = document.getElementById('kycStartBtn');
+    const email = submittedEmail || (document.getElementById('femail').value || '').trim();
+    kycMsg.style.display = 'block';
+    if (!email) {
+      kycMsg.style.color = '#c5372c';
+      kycMsg.textContent = isUr ? 'ای میل نہیں ملا۔ دوبارہ درخواست دیں۔' : 'Email missing. Please re-submit the form.';
+      return;
+    }
+    if (btn) { btn.style.pointerEvents = 'none'; btn.style.opacity = '0.6'; }
+    kycMsg.style.color = 'var(--muted)';
+    kycMsg.textContent = isUr ? 'تصدیق شروع کی جا رہی ہے…' : 'Starting verification…';
+    try {
+      const { data, error } = await supabase.functions.invoke('didit-create-session', { body: { email } });
+      if (error || !data || !data.url) throw new Error('SESSION_FAILED');
+      window.location.href = data.url; // Diditの安全な検証画面へ遷移
+    } catch (e) {
+      if (btn) { btn.style.pointerEvents = ''; btn.style.opacity = ''; }
+      kycMsg.style.color = '#c5372c';
+      kycMsg.textContent = isUr ? 'تصدیق شروع نہیں ہو سکی۔ دوبارہ کوشش کریں۔' : 'Could not start verification. Please try again.';
+      console.warn('didit start failed:', e && e.message); // PIIは出さない
+    }
+  }
+
+  // 「Verify my identity now」ボタン（送信後のStep 2・同タブで Didit へ遷移）
+  document.getElementById('kycStartBtn')?.addEventListener('click', (e) => { e.preventDefault(); startDiditVerification(); });
 
   // Chips logic
   const chips = document.querySelectorAll('.chip');
@@ -243,15 +384,27 @@
   const form = document.getElementById('applyForm');
   const errorMsg = document.getElementById('errorMsg');
   const formContainer = document.getElementById('form-container');
-  const thanksContainer = document.getElementById('thanks-container');
+  const kycStepContainer = document.getElementById('kyc-step-container');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!consentCb.checked) return;
-    
+
     const isUr = document.documentElement.lang === 'ur';
     if (selectedSkills.length === 0) {
       alert(isUr ? "براہ کرم کم از کم ایک مہارت منتخب کریں۔" : "Please select at least one skill.");
+      return;
+    }
+
+    // 月額レート: 数値・下限<=上限 を検証
+    const rateMin = parseInt(document.getElementById('frate_min').value, 10);
+    const rateMax = parseInt(document.getElementById('frate_max').value, 10);
+    if (Number.isNaN(rateMin) || Number.isNaN(rateMax)) {
+      alert(isUr ? "براہ کرم ماہانہ معاوضے کی رینج درج کریں۔" : "Please enter your monthly rate range.");
+      return;
+    }
+    if (rateMin > rateMax) {
+      alert(isUr ? "کم سے کم رقم زیادہ سے زیادہ رقم سے بڑی نہیں ہو سکتی۔" : "The lower rate cannot be greater than the upper rate.");
       return;
     }
 
@@ -261,12 +414,20 @@
     errorMsg.style.display = 'none';
 
     try {
+      const email = document.getElementById('femail').value.trim();
       const { error } = await supabase.from('applicants').insert({
         full_name: document.getElementById('fname').value,
-        email: document.getElementById('femail').value,
+        email: email,
         whatsapp: document.getElementById('fwa').value || null,
+        country: document.getElementById('fcountry').value,
         primary_skills: selectedSkills,
         years_experience: document.getElementById('fexp').value,
+        github_url: document.getElementById('fgithub').value || null,
+        upwork_url: document.getElementById('fupwork').value || null,
+        fiverr_url: document.getElementById('ffiverr').value || null,
+        portfolio_url: document.getElementById('fportfolio').value || null,
+        rate_min: rateMin,
+        rate_max: rateMax,
         lead_source: ls,
         locale: isUr ? 'ur' : 'en',
         consent_terms: true,
@@ -275,8 +436,10 @@
 
       if (error) throw error;
 
+      // 登録完了 → 本人確認(KYC)を必須ステップとして提示（Step 2）。emailを保持してDidit検証に使う。
+      submittedEmail = email;
       formContainer.style.display = 'none';
-      thanksContainer.style.display = 'block';
+      kycStepContainer.style.display = 'block';
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
     } catch (err) {
