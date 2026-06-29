@@ -139,16 +139,16 @@
     <div class="formbox-inner">
       <form id="applyForm">
         <div class="field">
-          <label data-ur="پورا نام *">Full Name *</label>
+          <label for="fname" data-ur="پورا نام *">Full Name *</label>
           <input type="text" id="fname" required placeholder="e.g. Ali Ahmed" data-ur-placeholder="مثال: علی احمد">
         </div>
         <div class="field">
-          <label data-ur="ای میل *">Email *</label>
+          <label for="femail" data-ur="ای میل *">Email *</label>
           <input type="email" id="femail" required placeholder="name@example.com" data-ur-placeholder="name@example.com">
           <span class="desc" data-ur="ہم آپ کو انٹرویو کی دعوت اسی ای میل پر بھیجیں گے۔">We will send interview invitations to this email.</span>
         </div>
         <div class="field">
-          <label data-ur="ملک *">Country *</label>
+          <label for="fcountry" data-ur="ملک *">Country *</label>
           <select id="fcountry" required>
             <option value="" disabled selected data-ur="منتخب کریں...">Select...</option>
             <option value="Pakistan" data-dial="+92" data-ur="پاکستان">Pakistan</option>
@@ -175,7 +175,7 @@
         </div>
 
         <div class="field">
-          <label data-ur="واٹس ایپ (اختیاری لیکن تجویز کردہ)">WhatsApp (Optional but recommended)</label>
+          <label for="fwa" data-ur="واٹس ایپ (اختیاری لیکن تجویز کردہ)">WhatsApp (Optional but recommended)</label>
           <input type="tel" id="fwa" placeholder="+92 300 1234567" data-ur-placeholder="+92 300 1234567">
           <span class="desc" data-ur="اوپر ملک منتخب کرنے پر کنٹری کوڈ خود بھر جاتا ہے۔">Country code fills in automatically when you pick your country above.</span>
         </div>
@@ -183,12 +183,12 @@
         <div class="field">
           <label data-ur="بنیادی مہارتیں (جو آپ پر لاگو ہوں انہیں منتخب کریں) *">Primary Skills (Select all that apply) *</label>
           <div class="chip-group" id="skillsContainer">
-            <div class="chip-cat">Frontend</div>
+            <div class="chip-cat" data-ur="فرنٹ اینڈ">Frontend</div>
             <div class="chip" data-val="React/Next.js">React/Next.js</div>
             <div class="chip" data-val="Vue/Nuxt">Vue/Nuxt</div>
             <div class="chip" data-val="Angular">Angular</div>
             <div class="chip" data-val="TypeScript">TypeScript</div>
-            <div class="chip-cat">Backend</div>
+            <div class="chip-cat" data-ur="بیک اینڈ">Backend</div>
             <div class="chip" data-val="Node.js">Node.js</div>
             <div class="chip" data-val="Python">Python</div>
             <div class="chip" data-val="Ruby on Rails">Ruby on Rails</div>
@@ -197,19 +197,19 @@
             <div class="chip" data-val="Java/Kotlin">Java/Kotlin</div>
             <div class="chip" data-val="C#/.NET">C#/.NET</div>
             <div class="chip" data-val="Rust">Rust</div>
-            <div class="chip-cat">Mobile</div>
+            <div class="chip-cat" data-ur="موبائل">Mobile</div>
             <div class="chip" data-val="Flutter">Flutter</div>
             <div class="chip" data-val="React Native">React Native</div>
             <div class="chip" data-val="iOS/Swift">iOS/Swift</div>
             <div class="chip" data-val="Android/Kotlin">Android/Kotlin</div>
-            <div class="chip-cat">Cloud &amp; DevOps</div>
+            <div class="chip-cat" data-ur="کلاؤڈ اور DevOps">Cloud &amp; DevOps</div>
             <div class="chip" data-val="AWS">AWS</div>
             <div class="chip" data-val="GCP">GCP</div>
             <div class="chip" data-val="Azure">Azure</div>
             <div class="chip" data-val="Docker/Kubernetes">Docker/Kubernetes</div>
             <div class="chip" data-val="CI/CD">CI/CD</div>
             <div class="chip" data-val="Terraform">Terraform</div>
-            <div class="chip-cat">Data &amp; AI</div>
+            <div class="chip-cat" data-ur="ڈیٹا اور AI">Data &amp; AI</div>
             <div class="chip" data-val="Machine Learning">Machine Learning</div>
             <div class="chip" data-val="LLM / Generative AI">LLM / Generative AI</div>
             <div class="chip" data-val="LLM Fine-tuning">LLM Fine-tuning</div>
@@ -218,7 +218,7 @@
             <div class="chip" data-val="Computer Vision">Computer Vision</div>
             <div class="chip" data-val="Data Engineering">Data Engineering</div>
             <div class="chip" data-val="MLOps">MLOps</div>
-            <div class="chip-cat">Other</div>
+            <div class="chip-cat" data-ur="دیگر">Other</div>
             <div class="chip" data-val="PostgreSQL/MySQL">PostgreSQL/MySQL</div>
             <div class="chip" data-val="MongoDB">MongoDB</div>
             <div class="chip" data-val="GraphQL">GraphQL</div>
@@ -231,7 +231,7 @@
         </div>
 
         <div class="field">
-          <label data-ur="پیشے کا تجربہ *">Years of Experience *</label>
+          <label for="fexp" data-ur="پیشے کا تجربہ *">Years of Experience *</label>
           <select id="fexp" required>
             <option value="" disabled selected data-ur="منتخب کریں...">Select...</option>
             <option value="0-1" data-ur="1 سال سے کم">Less than 1 year</option>
@@ -242,32 +242,32 @@
         </div>
 
         <div class="field">
-          <label data-ur="گٹ ہب پروفائل یو آر ایل *">GitHub Profile URL *</label>
+          <label for="fgithub" data-ur="گٹ ہب پروفائل یو آر ایل *">GitHub Profile URL *</label>
           <input type="url" id="fgithub" required placeholder="https://github.com/username" data-ur-placeholder="https://github.com/username">
           <span class="desc" data-ur="تقریباً تمام انجینئرز کے پاس ہوتا ہے — یہ ہمیں آپ کے کام کا جائزہ لینے میں مدد دیتا ہے۔">Almost every engineer has one — it helps us review your work.</span>
         </div>
 
         <div class="field">
-          <label data-ur="اپ ورک پروفائل یو آر ایل (اختیاری)">Upwork Profile URL (Optional)</label>
+          <label for="fupwork" data-ur="اپ ورک پروفائل یو آر ایل (اختیاری)">Upwork Profile URL (Optional)</label>
           <input type="url" id="fupwork" placeholder="https://www.upwork.com/freelancers/~..." data-ur-placeholder="https://www.upwork.com/freelancers/~...">
         </div>
 
         <div class="field">
-          <label data-ur="فائیور پروفائل یو آر ایل (اختیاری)">Fiverr Profile URL (Optional)</label>
+          <label for="ffiverr" data-ur="فائیور پروفائل یو آر ایل (اختیاری)">Fiverr Profile URL (Optional)</label>
           <input type="url" id="ffiverr" placeholder="https://www.fiverr.com/username" data-ur-placeholder="https://www.fiverr.com/username">
         </div>
 
         <div class="field">
-          <label data-ur="پورٹ فولیو / لنکڈ ان یو آر ایل (اختیاری)">Portfolio / LinkedIn URL (Optional)</label>
+          <label for="fportfolio" data-ur="پورٹ فولیو / لنکڈ ان یو آر ایل (اختیاری)">Portfolio / LinkedIn URL (Optional)</label>
           <input type="url" id="fportfolio" placeholder="https://..." data-ur-placeholder="https://...">
         </div>
 
         <div class="field">
           <label data-ur="متوقع ماہانہ معاوضہ (USD) *">Expected Monthly Rate (USD) *</label>
           <div style="display:flex; gap:12px; align-items:center;">
-            <input type="number" id="frate_min" min="0" step="100" required placeholder="From e.g. 1500" data-ur-placeholder="From e.g. 1500" style="flex:1;">
+            <input type="number" id="frate_min" min="0" step="100" required placeholder="From e.g. 1500" data-ur-placeholder="کم از کم (مثلاً 1500)" style="flex:1;">
             <span style="color:var(--muted); font-weight:700;">–</span>
-            <input type="number" id="frate_max" min="0" step="100" required placeholder="To e.g. 2500" data-ur-placeholder="To e.g. 2500" style="flex:1;">
+            <input type="number" id="frate_max" min="0" step="100" required placeholder="To e.g. 2500" data-ur-placeholder="زیادہ سے زیادہ (مثلاً 2500)" style="flex:1;">
           </div>
           <span class="desc" data-ur="ایک رینج دیں (کم سے کم اور زیادہ سے زیادہ)۔ یہ صرف ایک ابتدائی اندازہ ہے۔">Give a range (lower and upper). This is only an initial estimate.</span>
         </div>
@@ -279,7 +279,7 @@
              文言は _LP-handoff/Didit_表示コピー.md（エンジニア向け英語コピー）を使用。 -->
         <hr style="border:none; border-top:1px solid var(--line); margin:8px 0 28px;">
         <div class="field" style="margin-bottom:8px;">
-          <label style="font-size:16px;" data-ur="🔒 شناخت کی تصدیق (KYC) — لازمی">🔒 Identity Verification (KYC) — required</label>
+          <label style="font-size:16px;" data-ur="🔒 شناخت کی تصدیق (KYC) — تعارف سے پہلے لازمی">🔒 Identity Verification (KYC) — required before we introduce you</label>
           <span class="desc" data-ur="جاپانی کمپنیوں سے آپ کو محفوظ طریقے سے متعارف کروانے کے لیے، رجسٹریشن مکمل کرنے کے بعد ہم آپ سے ایک مختصر شناختی تصدیق مکمل کرنے کے لیے کہیں گے — براہ کرم تعاون کریں۔ یہ تصدیق ایک معروف بیرونی فراہم کنندہ Didit (ISO 27001, SOC 2, GDPR) کرتا ہے۔ آپ کا شناختی دستاویز اور سیلفی Didit کے پلیٹ فارم پر محفوظ طریقے سے پروسیس ہوتے ہیں اور ہمارے سرورز پر محفوظ نہیں کیے جاتے — ہمیں صرف تصدیق کا نتیجہ ملتا ہے۔">To introduce you safely to Japanese companies, we'll ask you to complete a short identity check right after you submit — please cooperate. This is done by Didit, a well-known external provider (ISO 27001, SOC 2, GDPR-compliant). Your ID document and selfie are processed securely on Didit's platform and are <b>not stored on our servers</b> — we only receive the verification result.</span>
         </div>
         <!-- ===== /KYC ===== -->
@@ -331,17 +331,7 @@
     <p style="margin-top:16px;"><a href="engineers.html" style="color:var(--muted); font-size:13px; text-decoration:underline;" data-ur="جائزہ پر واپس جائیں">Back to overview</a></p>
   </div>
 
-  <div class="formbox thanks-msg" id="thanks-container">
-    <div class="icon">
-      <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-    </div>
-    <h2 data-ur="آپ کی درخواست جمع ہو گئی ہے!">Application Submitted!</h2>
-    <p data-ur="Japan System نیٹ ورک میں شامل ہونے کا شکریہ۔ ہم آپ کے پروفائل کا جائزہ لیں گے اور اگر آپ کی مہارتیں ہمارے کلائنٹس سے مطابقت رکھتی ہیں تو آپ سے رابطہ کریں گے۔">Thank you for joining the Japan System. We will review your profile and reach out if your skills match our clients.</p>
-    <p data-ur="اگلا قدم: اپنے انٹرویو کے امکانات کو بڑھانے کے لیے اپنے مائی پیج (My Page) کو مکمل کریں۔">Next step: Complete your My Page to increase your chances of an interview.</p>
-    <br>
-    <a href="profile.html" class="btn" data-ur="اپنے مائی پیج پر جائیں →">Go to My Page →</a>
   </div>
-</div>
 
 <footer>
   Vostok Inc.（株式会社Vostok）· Hive Shibuya 4F, 1-23-10 Jinnan, Shibuya-ku, Tokyo 150-0041, Japan<br>
@@ -527,6 +517,16 @@
 
     } catch (err) {
       console.error(err);
+      // 23505 = unique制約違反（同じemailで既に応募済み）→ 重複登録を防ぎ、親切に案内
+      if (err && (err.code === '23505' || /duplicate key|unique/i.test(err.message || ''))) {
+        errorMsg.textContent = isUr
+          ? 'اس ای میل سے پہلے ہی درخواست موصول ہو چکی ہے۔ اپ ڈیٹ کے لیے مائی پیج استعمال کریں۔'
+          : "You've already applied with this email — we have your application. Use My Page to update your details.";
+      } else {
+        errorMsg.textContent = isUr
+          ? 'جمع کروانے میں ایک مسئلہ تھا۔ براہ کرم دوبارہ کوشش کریں۔'
+          : 'There was a problem submitting. Please try again.';
+      }
       errorMsg.style.display = 'block';
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;

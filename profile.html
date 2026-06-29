@@ -118,7 +118,7 @@
     
     <form id="magicLinkForm">
       <div class="field" style="text-align:left;">
-        <label data-ur="ای میل">Email</label>
+        <label for="authEmail" data-ur="ای میل">Email</label>
         <input type="email" id="authEmail" required placeholder="name@example.com" data-ur-placeholder="name@example.com">
       </div>
       <button type="submit" class="submit-btn" id="magicLinkBtn" data-ur="میجک لنک بھیجیں">Send Magic Link</button>
@@ -134,22 +134,22 @@
         <h3 style="font-size:22px; font-weight:900; margin-bottom:24px;" data-ur="آپ کا پروفائل">Your Profile</h3>
         
         <div class="field">
-          <label data-ur="گٹ ہب پروفائل یو آر ایل (اختیاری)">GitHub Profile URL (Optional)</label>
+          <label for="p_github" data-ur="گٹ ہب پروفائل یو آر ایل (اختیاری)">GitHub Profile URL (Optional)</label>
           <input type="url" id="p_github" placeholder="https://github.com/username" data-ur-placeholder="https://github.com/username">
         </div>
         
         <div class="field">
-          <label data-ur="پورٹ فولیو / لنکڈ ان (اختیاری)">Portfolio / LinkedIn URL (Optional)</label>
+          <label for="p_portfolio" data-ur="پورٹ فولیو / لنکڈ ان (اختیاری)">Portfolio / LinkedIn URL (Optional)</label>
           <input type="url" id="p_portfolio" placeholder="https://..." data-ur-placeholder="https://...">
         </div>
         
         <div class="field">
-          <label data-ur="مہارتیں (کوما سے الگ کریں) (اختیاری)">Skills (comma separated) (Optional)</label>
+          <label for="p_skills" data-ur="مہارتیں (کوما سے الگ کریں) (اختیاری)">Skills (comma separated) (Optional)</label>
           <input type="text" id="p_skills" placeholder="e.g. React, Python, AWS" data-ur-placeholder="مثال: React, Python, AWS">
         </div>
 
         <div class="field">
-          <label data-ur="متوقع ماہانہ معاوضہ (USD) (اختیاری)">Expected Monthly Rate (USD) (Optional)</label>
+          <label for="p_rate" data-ur="متوقع ماہانہ معاوضہ (USD) (اختیاری)">Expected Monthly Rate (USD) (Optional)</label>
           <input type="text" id="p_rate" placeholder="e.g. $1500" data-ur-placeholder="مثال: $1500">
         </div>
 
@@ -162,7 +162,7 @@
         <p style="font-size:13.5px; color:var(--muted); margin-bottom:28px; line-height:1.6;" data-ur="یہ معلومات ریکارڈ اور انوائس کے لیے استعمال ہوتی ہے، اور اس سے تصدیق ہوتی ہے کہ آپ جاپان سے باہر کے ٹیکس ریزیڈنٹ ہیں۔">Used for records and invoices, and to confirm you are a tax resident outside Japan.</p>
 
         <div class="field">
-          <label data-ur="ملک (ٹیکس رہائش)">Country (Tax Residence)</label>
+          <label for="p_tax_country" data-ur="ملک (ٹیکس رہائش)">Country (Tax Residence)</label>
           <input type="text" id="p_tax_country" placeholder="Pakistan" data-ur-placeholder="پاکستان">
         </div>
         <div class="field" style="display:flex; gap:10px; align-items:flex-start;">
@@ -179,7 +179,7 @@
         <p style="font-size:13.5px; color:var(--muted); margin-bottom:28px; line-height:1.6;" data-ur="بینک کی معلومات صرف آپ کی رقم بھیجنے کے لیے محفوظ طریقے سے محفوظ کی جاتی ہیں۔ آپ اسے کام شروع کرنے کے بعد شامل کر سکتے ہیں، لیکن پہلی ادائیگی کے لیے یہ ضروری ہے۔ اکاؤنٹ ہولڈر کا نام آپ کے شناختی دستاویز (KYC) کے نام سے مطابقت رکھنا ضروری ہے۔">Bank information is stored securely only for sending your money. You can add this after starting work, but it is required for your first payment. Your account holder name must match the name on your identity document (KYC).</p>
 
         <div class="field">
-          <label data-ur="ادائیگی کا طریقہ (اختیاری)">Payout Method (Optional)</label>
+          <label for="p_method" data-ur="ادائیگی کا طریقہ (اختیاری)">Payout Method (Optional)</label>
           <select id="p_method">
             <option value="" disabled selected data-ur="منتخب کریں...">Select...</option>
             <option value="Wise">Wise</option>
@@ -188,17 +188,17 @@
         </div>
 
         <div class="field">
-          <label data-ur="اکاؤنٹ ہولڈر کا نام (اختیاری)">Account Holder Name (Optional)</label>
+          <label for="p_holder" data-ur="اکاؤنٹ ہولڈر کا نام (اختیاری)">Account Holder Name (Optional)</label>
           <input type="text" id="p_holder" placeholder="Ali Ahmed" data-ur-placeholder="علی احمد">
         </div>
 
         <div class="field">
-          <label data-ur="IBAN / اکاؤنٹ نمبر (اختیاری)">IBAN / Account Number (Optional)</label>
+          <label for="p_iban" data-ur="IBAN / اکاؤنٹ نمبر (اختیاری)">IBAN / Account Number (Optional)</label>
           <input type="text" id="p_iban" placeholder="PK..." data-ur-placeholder="PK...">
         </div>
 
         <div class="field">
-          <label data-ur="بینک کا نام (اختیاری)">Bank Name (Optional)</label>
+          <label for="p_bank" data-ur="بینک کا نام (اختیاری)">Bank Name (Optional)</label>
           <input type="text" id="p_bank" placeholder="e.g. Meezan Bank" data-ur-placeholder="مثال: Meezan Bank">
         </div>
 
