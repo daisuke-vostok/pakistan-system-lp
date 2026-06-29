@@ -52,6 +52,26 @@
 
   /* ===== Urdu / RTL mode ===== */
   html[dir="rtl"] body{font-family:'Noto Nastaliq Urdu','Noto Sans',serif;line-height:2.0;}
+
+  /* ===== Mobile（スマホ最適化） ===== */
+  @media (max-width: 600px){
+    .nav{padding:10px 14px;}
+    .nav .brand img:first-child{height:36px !important;}
+    .nav .brand img:last-child{height:20px !important;}
+    .nav > div{gap:8px !important;}
+    .nav a.back{display:none;}
+    .langtoggle button{padding:6px 10px; font-size:12px;}
+    .hero{padding:30px 16px 90px;}
+    .hero h1{font-size:22px; line-height:1.3;}
+    .hero p{font-size:13.5px;}
+    .badges{gap:8px;}
+    .badge{padding:5px 12px; font-size:11.5px;}
+    .formcard{padding:0 12px 12px;}
+    .formbox-inner{padding:24px 16px;}
+    .field input[type="text"], .field input[type="email"], .field input[type="url"], .field input[type="date"], .field select{font-size:16px;}
+    .submit-btn{padding:15px; font-size:15px;}
+    footer{padding:20px 14px 36px;}
+  }
   </style>
 </head>
 <body>
