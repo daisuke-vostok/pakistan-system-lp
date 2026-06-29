@@ -302,7 +302,10 @@
     kycMsg.style.color = 'var(--muted)';
     kycMsg.textContent = isUr() ? 'تصدیق شروع کی جا رہی ہے…' : 'Starting verification…';
     try {
-      const { data, error } = await supabase.functions.invoke('didit-create-session', { body: { email } });
+      const { data, error } = await supabase.functions.invoke('didit-create-session', { body: {
+        email,
+        callback: location.origin + location.pathname + '?kyc=submitted'
+      } });
       if (error || !data || !data.url) throw new Error('SESSION_FAILED');
       renderKycBadge('申請中'); // webhookで最終確定するまでは「審査中」
       window.location.href = data.url; // Diditの安全な検証画面へ

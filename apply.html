@@ -319,6 +319,17 @@
     <p style="margin-top:22px;"><a href="profile.html" style="color:var(--muted); font-size:13px; text-decoration:underline;" data-ur="میں بعد میں اپنے مائی پیج سے تصدیق کروں گا">I'll verify later from My Page</a></p>
   </div>
 
+  <!-- ===== Diditの検証完了後の戻り先（callback=?kyc=submitted）。受領メッセージを表示。 ===== -->
+  <div class="formbox thanks-msg" id="kyc-return-container">
+    <div class="icon">
+      <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+    </div>
+    <h2 data-ur="شکریہ — تصدیق موصول ہو گئی">Thanks — verification received</h2>
+    <p data-ur="ہمیں آپ کی شناختی تصدیق مل گئی ہے۔ ہماری ٹیم آپ کی درخواست کا جائزہ لے گی اور موزوں ہونے پر رابطہ کرے گی۔ آپ یہ صفحہ بند کر سکتے ہیں۔">We've received your identity verification. Our team will review your application and reach out if there's a match. You can safely close this page.</p>
+    <br>
+    <a href="engineers.html" class="btn" data-ur="جائزہ پر واپس جائیں →">Back to overview →</a>
+  </div>
+
   <div class="formbox thanks-msg" id="thanks-container">
     <div class="icon">
       <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
@@ -346,15 +357,26 @@
   var allowed = ['LP-A','LP-B','Upwork','Referral','University','Other'];
   if (allowed.indexOf(ls) === -1) ls = 'Other';
 
+  // Diditの検証完了後はここへ戻ってくる(?kyc=submitted)。フォームでなく受領メッセージを表示。
+  if (new URLSearchParams(location.search).get('kyc')) {
+    const fc = document.getElementById('form-container');
+    const rc = document.getElementById('kyc-return-container');
+    if (fc) fc.style.display = 'none';
+    if (rc) rc.style.display = 'block';
+    window.scrollTo({ top: 0 });
+  }
+
   // 本人確認は Didit に委譲。送信成功後に表示する「Step 2」で、Edge Function(didit-create-session)が
   // 検証セッションを作り、返ってきた verification_url（Diditのホスト画面）へ遷移する。
   // 生PII（番号・画像）はクライアントから送らない。emailは送信時に保存したものを使う。
   let submittedEmail = '';
+  let submittedName = '';
   async function startDiditVerification(){
     const isUr = document.documentElement.lang === 'ur';
     const kycMsg = document.getElementById('kycMsg');
     const btn = document.getElementById('kycStartBtn');
     const email = submittedEmail || (document.getElementById('femail').value || '').trim();
+    const fullName = submittedName || (document.getElementById('fname').value || '').trim();
     kycMsg.style.display = 'block';
     if (!email) {
       kycMsg.style.color = '#c5372c';
@@ -365,7 +387,11 @@
     kycMsg.style.color = 'var(--muted)';
     kycMsg.textContent = isUr ? 'تصدیق شروع کی جا رہی ہے…' : 'Starting verification…';
     try {
-      const { data, error } = await supabase.functions.invoke('didit-create-session', { body: { email } });
+      const { data, error } = await supabase.functions.invoke('didit-create-session', { body: {
+        email,
+        full_name: fullName || undefined,
+        callback: location.origin + location.pathname + '?kyc=submitted'
+      } });
       if (error || !data || !data.url) throw new Error('SESSION_FAILED');
       window.location.href = data.url; // Diditの安全な検証画面へ遷移
     } catch (e) {
@@ -491,8 +517,9 @@
 
       if (error) throw error;
 
-      // 登録完了 → 本人確認(KYC)を必須ステップとして提示（Step 2）。emailを保持してDidit検証に使う。
+      // 登録完了 → 本人確認(KYC)を必須ステップとして提示（Step 2）。email/氏名を保持してDidit検証に使う。
       submittedEmail = email;
+      submittedName = (document.getElementById('fname').value || '').trim();
       formContainer.style.display = 'none';
       kycStepContainer.style.display = 'block';
       window.scrollTo({ top: 0, behavior: 'smooth' });
